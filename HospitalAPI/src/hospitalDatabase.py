@@ -1,48 +1,84 @@
 import requests
 import json
 from hospital import Hospital
+from concurrent.futures import ThreadPoolExecutor
 
 class HospitalDatabase:
+    MAX_RETRIES = 2
+    INSTITUTION_URL = "https://tempos.min-saude.pt/api.php/institution"
+    STANDBY_TIME_URL = "https://tempos.min-saude.pt/api.php/standbyTime/"
+    GENERAL_URGENCY_DESCRIPTIONS = {"Urgência Geral", "Urgencia Geral", "Urg. Geral", "SERVICO URGENCIA BASICO"}
 
-    # Constructor
     def __init__(self):
         self.hospitals = []
 
-    # HospitalDatabase to string
     def __str__(self):
         return "\n".join(str(hospital) for hospital in self.hospitals)
 
-    # Get Hospital by ID
     def get_hospital_by_id(self, id):
-        for hospital in self.hospitals:
-            if hospital.id == id:
-                return hospital
-        return None
+        return next((hospital for hospital in self.hospitals if hospital.id == id), None)
 
-    # Fetch Hospitals Data
-    def fetch_hospitals_data(self):
-        url = "https://tempos.min-saude.pt/api.php/institution"
+    def fetch_and_process_hospitals_data(self):
         try:
-            response = requests.get(url)
-            response.raise_for_status()  # Raise an HTTPError for bad responses
-
+            response = requests.get(self.INSTITUTION_URL)
+            response.raise_for_status()
             data = json.loads(response.content.decode("utf-8-sig"))
-            self.process_hospitals_data(data)
+
+            hospitals_data = data.get("Result", [])
+            self.hospitals = [Hospital(id=hospital["Id"], name=hospital["Name"], address=hospital["Address"])
+                              for hospital in hospitals_data if hospital.get("HasEmergency", False)]
+
+            self.get_waiting_times()
+
         except requests.RequestException as e:
-            print(f"Failed to fetch data. Error: {e}")
+            print(f"Failed to fetch or process data. Error: {e}")
 
-    # Process Hospitals Data
-    def process_hospitals_data(self, data):
-        hospitals_data = data.get("Result", [])
+    def get_waiting_times(self):
+        try:
+            with ThreadPoolExecutor() as executor:
+                futures = [executor.submit(self.fetch_hospital_waiting_times, hospital) for hospital in self.hospitals]
+                wait_times = [future.result() for future in futures]
 
-        for hospital_data in hospitals_data:
-            has_urgency = hospital_data.get("HasEmergency", False)
+                for hospital, wait_time in zip(self.hospitals, wait_times):
+                    hospital.wait_time = wait_time
 
-            if has_urgency:
-                hospital = Hospital(
-                    id=hospital_data.get("Id"),
-                    name=hospital_data.get("Name"),
-                    address=hospital_data.get("Address"),
-                    wait_time=hospital_data.get("wait_time"),
-                )
-                self.hospitals.append(hospital)
+        except requests.RequestException as e:
+            print(f"Failed to fetch or process data. Error: {e}")
+
+    def fetch_hospital_waiting_times(self, hospital):
+        for retry in range(self.MAX_RETRIES + 1):
+            try:
+                response = requests.get(f"{self.STANDBY_TIME_URL}{hospital.id}", timeout=10)
+                response.raise_for_status()
+
+                content = response.content.decode("utf-8-sig")
+
+                if content:
+                    data = json.loads(content)
+                    urgency_general_queues = [
+                        queue for queue in data.get("Result", [])
+                        if queue.get("Emergency", {}).get("Description") in self.GENERAL_URGENCY_DESCRIPTIONS
+                    ]
+
+                    if urgency_general_queues:
+                        first_occurrence = urgency_general_queues[0]
+                        return {
+                            "Red": first_occurrence.get("Red", {}),
+                            "Orange": first_occurrence.get("Orange", {}),
+                            "Yellow": first_occurrence.get("Yellow", {}),
+                            "Green": first_occurrence.get("Green", {}),
+                            "Blue": first_occurrence.get("Blue", {}),
+                        }
+                    else:
+                        return {}
+                else:
+                    return {}
+
+            except requests.Timeout:
+                if retry < self.MAX_RETRIES:
+                    pass
+                else:
+                    return []
+
+            except requests.RequestException:
+                return []
