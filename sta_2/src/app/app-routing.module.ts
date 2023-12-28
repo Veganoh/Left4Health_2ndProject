@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DiagnosisComponent } from './diagnosis/diagnosis.component'; // Importe o componente Diagnosis
+import { SuggestionsComponent } from './suggestions/suggestions.component';
 
 const routes: Routes = [
-  { path: 'diagnosis', component: DiagnosisComponent }, // Defina a rota para o componente Diagnosis
-  // ... outras rotas
+  { path: 'suggestions', component: SuggestionsComponent },
 ];
 
 @NgModule({

@@ -43,5 +43,6 @@ class HospitalDatabase:
                     id=hospital_data.get("Id"),
                     name=hospital_data.get("Name"),
                     address=hospital_data.get("Address"),
+                    wait_time=hospital_data.get("wait_time"),
                 )
                 self.hospitals.append(hospital)

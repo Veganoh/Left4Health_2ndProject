@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HospitalService } from '../hospital.service';
 
 @Component({
   selector: 'app-suggestions',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SuggestionsComponent implements OnInit {
 
-  constructor() { }
+  suggestedHospitals: any[] = []; 
+
+  constructor(private hospitalService: HospitalService) { }
 
   ngOnInit(): void {
+    this.getHospitals();
   }
 
+  getHospitals(): void {
+    this.hospitalService.getHospitals()
+      .subscribe((data: any[]) => {
+        this.suggestedHospitals = data; 
+        console.log(this.suggestedHospitals);
+      });
+  }
 }

@@ -1,1 +1,13 @@
-<p>suggestions works!</p>
+<div class="suggestions">
+  <h2>Sugestões de Hospitais</h2>
+  <ul>
+    <li *ngFor="let hospital of suggestedHospitals">
+      <div class="hospital-card">
+        <h3>{{ hospital.name }}</h3>
+        <p class="hospital-info">Endereço: {{ hospital.address }}</p>
+        <p class="hospital-info">Distância: {{ hospital.distance }} km</p>
+        <p class="hospital-info">Tempo de Espera: {{ hospital.wait_time }} minutos</p>
+      </div>
+    </li>
+  </ul>
+</div>
