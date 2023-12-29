@@ -1,0 +1,50 @@
+.diagnostico-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  .diagnostico-content {
+    background-color: #f8f8f8;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    width: 90%;
+    max-width: 800px;
+    margin: 20px auto;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Restante dos estilos mantidos igual */
+  
+  /* Para tornar o botão de submissão mais visível */
+  button {
+    margin-top: 30px;
+    padding: 12px 24px;
+    font-size: 1.2rem;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%; /* Ocupar a largura máxima do container */
+    box-sizing: border-box; /* Incluir o padding no tamanho total */
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  
+  
+  
+
+  

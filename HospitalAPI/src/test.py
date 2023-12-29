@@ -12,8 +12,8 @@ db = HospitalDatabase()
 # ou seja worst case scenario esse método demora 30 segundos para preencher a database e os tempos
 
 #VVVVVVVVVVVVVVVVVV Pra testares
-#db.fetch_and_process_hospitals_data()
-#print(db)
+db.fetch_and_process_hospitals_data()
+print(db)
 
 # para a api do google tambem é simples
 # apenas vais meter a origem do que o utilizador escrever no frontend, e a morada de cada hospital o metodo retorna a distancia e a duração

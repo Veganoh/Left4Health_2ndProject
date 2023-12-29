@@ -1,0 +1,34 @@
+<div class="diagnostico-container">
+  <header>
+    <h1>Responda às seguintes questões</h1>
+  </header>
+  <main>
+    <section class="diagnostico-form">
+      <div class="diagnostico-content">
+        <h2>Diagnóstico</h2>
+        <form>
+          <div class="questoes" *ngFor="let resposta of respostas | keyvalue; let i = index">
+            <p>Questão {{ i + 1 }}</p>
+            <div class="resposta">
+              <select class="form-control" 
+                      [(ngModel)]="respostas[resposta.key].valor"
+                      id="q{{ i + 21 }}"
+                      name="q{{ i + 21 }}">
+                <option value="1">1. Nada</option>
+                <option value="2">2. Um pouco</option>
+                <option value="3">3. Moderadamente</option>
+                <option value="4">4. Muito</option>
+                <option value="5">5. Extremamente</option>
+              </select>
+              <textarea placeholder="Observações" [(ngModel)]="respostas[resposta.key].observacoes"></textarea>
+            </div>
+          </div>
+          <button (click)="submeterRespostas()">Submeter Respostas</button>
+        </form>
+      </div>
+    </section>
+  </main>
+</div>
+
+
+

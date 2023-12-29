@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HospitalService } from '../hospital.service';
+import { HospitalService } from '../services/hospital.service';
 
 @Component({
   selector: 'app-suggestions',
