@@ -20,8 +20,5 @@ db.fetch_and_process_hospitals_data()
 
 origin = "Rua Doutor António José de Almeida 628 Gueifães Maia 4470-017"
 
-db.get_waiting_times("Green")
-db.update_distances_and_durations(origin)
-
-#db.update_waiting_times_distances_durations(origin, "Green")
+db.get_pacient_distance_duration_waiting_time("Green",origin)
 print(db)

@@ -35,7 +35,8 @@ class HospitalDatabase:
         except requests.RequestException as e:
             print(f"Failed to fetch or process data. Error: {e}")
 
-    def get_waiting_times(self, color):
+    def get_pacient_distance_duration_waiting_time(self, color, origin):
+        routeFetcher.calculate_distance_duration(origin, self.hospitals)
         try:
             with ThreadPoolExecutor() as executor:
                 futures = [executor.submit(self.fetch_hospital_waiting_times, hospital, color) for hospital in
@@ -51,7 +52,7 @@ class HospitalDatabase:
     def fetch_hospital_waiting_times(self, hospital, color):
         for retry in range(self.MAX_RETRIES + 1):
             try:
-                response = requests.get(f"{self.STANDBY_TIME_URL}{hospital.id}", timeout=3)
+                response = requests.get(f"{self.STANDBY_TIME_URL}{hospital.id}", timeout=1)
                 response.raise_for_status()
 
                 content = response.content.decode("utf-8-sig")
@@ -79,27 +80,3 @@ class HospitalDatabase:
 
             except requests.RequestException:
                 return math.inf
-
-    def update_distances_and_durations(self, origin):
-        try:
-            with ThreadPoolExecutor() as executor:
-                futures = [executor.submit(self.calculate_and_update_distance_duration, hospital, origin)
-                           for hospital in self.hospitals]
-                results = [future.result() for future in futures]
-
-                for hospital, (distance, duration) in zip(self.hospitals, results):
-                    hospital.distance_from_current_pacient = distance
-                    hospital.duration_from_current_pacient = duration
-
-        except Exception as e:
-            print(f"Failed to update distances and durations. Error: {e}")
-
-    def calculate_and_update_distance_duration(self, hospital, origin):
-        try:
-            destination = hospital.address
-            distance, duration = routeFetcher.calculate_distance_duration(origin, destination)
-            return distance, duration
-
-        except Exception as e:
-            print(f"Failed to calculate distance and duration for {hospital.name}. Error: {e}")
-            return math.inf, math.inf
