@@ -3,6 +3,9 @@ import json
 from hospital import Hospital
 from concurrent.futures import ThreadPoolExecutor
 
+import math
+import routeFetcher
+
 class HospitalDatabase:
     MAX_RETRIES = 2
     INSTITUTION_URL = "https://tempos.min-saude.pt/api.php/institution"
@@ -28,27 +31,27 @@ class HospitalDatabase:
             self.hospitals = [Hospital(id=hospital["Id"], name=hospital["Name"], address=hospital["Address"])
                               for hospital in hospitals_data if hospital.get("HasEmergency", False)]
 
-            self.get_waiting_times()
 
         except requests.RequestException as e:
             print(f"Failed to fetch or process data. Error: {e}")
 
-    def get_waiting_times(self):
+    def get_waiting_times(self, color):
         try:
             with ThreadPoolExecutor() as executor:
-                futures = [executor.submit(self.fetch_hospital_waiting_times, hospital) for hospital in self.hospitals]
+                futures = [executor.submit(self.fetch_hospital_waiting_times, hospital, color) for hospital in
+                           self.hospitals]
                 wait_times = [future.result() for future in futures]
 
                 for hospital, wait_time in zip(self.hospitals, wait_times):
-                    hospital.wait_time = wait_time
+                    hospital.current_wait_time_pacient = wait_time
 
         except requests.RequestException as e:
             print(f"Failed to fetch or process data. Error: {e}")
 
-    def fetch_hospital_waiting_times(self, hospital):
+    def fetch_hospital_waiting_times(self, hospital, color):
         for retry in range(self.MAX_RETRIES + 1):
             try:
-                response = requests.get(f"{self.STANDBY_TIME_URL}{hospital.id}", timeout=10)
+                response = requests.get(f"{self.STANDBY_TIME_URL}{hospital.id}", timeout=3)
                 response.raise_for_status()
 
                 content = response.content.decode("utf-8-sig")
@@ -62,23 +65,41 @@ class HospitalDatabase:
 
                     if urgency_general_queues:
                         first_occurrence = urgency_general_queues[0]
-                        return {
-                            "Red": first_occurrence.get("Red", {}),
-                            "Orange": first_occurrence.get("Orange", {}),
-                            "Yellow": first_occurrence.get("Yellow", {}),
-                            "Green": first_occurrence.get("Green", {}),
-                            "Blue": first_occurrence.get("Blue", {}),
-                        }
+                        return first_occurrence.get(color, {}).get('Time', None)
                     else:
-                        return {}
+                        return math.inf
                 else:
-                    return {}
+                    return math.inf
 
             except requests.Timeout:
                 if retry < self.MAX_RETRIES:
                     pass
                 else:
-                    return []
+                    return math.inf
 
             except requests.RequestException:
-                return []
+                return math.inf
+
+    def update_distances_and_durations(self, origin):
+        try:
+            with ThreadPoolExecutor() as executor:
+                futures = [executor.submit(self.calculate_and_update_distance_duration, hospital, origin)
+                           for hospital in self.hospitals]
+                results = [future.result() for future in futures]
+
+                for hospital, (distance, duration) in zip(self.hospitals, results):
+                    hospital.distance_from_current_pacient = distance
+                    hospital.duration_from_current_pacient = duration
+
+        except Exception as e:
+            print(f"Failed to update distances and durations. Error: {e}")
+
+    def calculate_and_update_distance_duration(self, hospital, origin):
+        try:
+            destination = hospital.address
+            distance, duration = routeFetcher.calculate_distance_duration(origin, destination)
+            return distance, duration
+
+        except Exception as e:
+            print(f"Failed to calculate distance and duration for {hospital.name}. Error: {e}")
+            return math.inf, math.inf
