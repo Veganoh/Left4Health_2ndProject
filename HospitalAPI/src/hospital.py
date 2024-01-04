@@ -20,5 +20,5 @@ class Hospital:
         if isinstance(self.current_wait_time, dict):
             return self.current_wait_time.get(color)
         else:
-            return math.inf  # or handle the case where self.current_wait_time is not a dictionary
+            return 999999999  # or handle the case where self.current_wait_time is not a dictionary
 

@@ -1,5 +1,6 @@
 import routeFetcher
 from hospitalDatabase import HospitalDatabase
+from topsis import Topsis
 
 db = HospitalDatabase()
 
@@ -12,9 +13,15 @@ db.fetch_and_process_hospitals_data()
 # este método recebe a origem, os hospitais e o método de transporte e retorna uma lista de par ID de Hospistal e Tempo
 origin = "Rua Doutor António José de Almeida 628 Gueifães Maia 4470-017"
 #Mode: driving, walking, bicycling, transit
-res = routeFetcher.calculate_distance_duration(origin,"driving",db.hospitals)
-print(res)
-
+duration_times = routeFetcher.calculate_distance_duration(origin,"walking",db.hospitals)
+print(duration_times)
 # Este método faz a mesma coisa  que o de cima só que recebe uma cor e retorna uma lista de par ID de Hospistal e Tempo de Espera no Hospital
-res = db.get_hospitals_by_color("Yellow")
-print(res)
+wait_times = db.get_hospitals_by_color("Yellow")
+print(wait_times)
+
+weights = [0.5,0.5]
+
+tp = Topsis(wait_times,duration_times,weights)
+
+
+
