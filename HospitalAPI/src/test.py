@@ -11,7 +11,8 @@ db.fetch_and_process_hospitals_data()
 # Para fazeres a matriz vais precisares de uma lista com as distâncias entre a origem e cada hospital
 # este método recebe a origem, os hospitais e o método de transporte e retorna uma lista de par ID de Hospistal e Tempo
 origin = "Rua Doutor António José de Almeida 628 Gueifães Maia 4470-017"
-res = routeFetcher.calculate_distance_duration(origin,db.hospitals)
+#Mode: driving, walking, bicycling, transit
+res = routeFetcher.calculate_distance_duration(origin,"driving",db.hospitals)
 print(res)
 
 # Este método faz a mesma coisa  que o de cima só que recebe uma cor e retorna uma lista de par ID de Hospistal e Tempo de Espera no Hospital

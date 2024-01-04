@@ -7,21 +7,28 @@ def duration_to_seconds(duration_str):
     parts = duration_str.split()
 
     total_seconds = 0
-    for i in range(0, len(parts), 2):
-        value = int(parts[i])
-        unit = parts[i + 1]
+    for i in range(0, len(parts), 3):
+        try:
+            value = int(parts[i])
+        except ValueError:
+            continue
 
-        if unit.startswith('hour'):
+        unit = parts[i + 1].lower()
+        unit = unit.rstrip('s')
+
+        if 'day' in unit:
+            total_seconds += value * 86400
+        elif 'hour' in unit:
             total_seconds += value * 3600
-        elif unit.startswith('min'):
+        elif 'min' in unit:
             total_seconds += value * 60
-        elif unit.startswith('sec'):
+        elif 'sec' in unit:
             total_seconds += value
 
     return total_seconds
 
 
-def calculate_distance_duration(origin, hospitals):
+def calculate_distance_duration(origin, mode, hospitals):
     load_dotenv()
     api_key = os.getenv("API_KEY")
 
@@ -32,14 +39,13 @@ def calculate_distance_duration(origin, hospitals):
         result = []
 
         for i in range(0, len(hospitals), batch_size):
-            batch_hospitals = hospitals[i:i+batch_size]
+            batch_hospitals = hospitals[i:i + batch_size]
 
             destinations = [hospital.address for hospital in batch_hospitals]
-            matrix = gmaps.distance_matrix(origin, destinations)
+            matrix = gmaps.distance_matrix(origin, destinations, mode=mode)
 
-            # Check if the response has the expected structure
             if 'rows' in matrix and matrix['rows']:
-                row = matrix['rows'][0]  # Apenas uma única entrada em 'rows'
+                row = matrix['rows'][0]
 
                 if 'elements' in row and row['elements']:
                     for hospital, element in zip(batch_hospitals, row['elements']):
