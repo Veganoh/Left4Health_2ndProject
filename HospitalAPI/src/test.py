@@ -3,22 +3,17 @@ from hospitalDatabase import HospitalDatabase
 
 db = HospitalDatabase()
 
-
-# Este método preenche a database com os hospitais que tem urgencias, e depois preenche o atribute wait_time de cada hospital com
-# o tempo de espera da urgencia geral de cada hospital
-# isto é tudo da api do sns n precisamos de mais nada
-# COMO A API DO SNS É UMA MERDA E AS VEZES FUNCIONA OUTRA VEZES NAO, ELE TENTA 3 VEZES POR HOSPITAL
-# pedir o tempo de espera, se falhar 3 vezes fica [] , ele leva timeout passado 10 segunso e volta a tentar
-# ou seja worst case scenario esse método demora 30 segundos para preencher a database e os tempos
-
-#VVVVVVVVVVVVVVVVVV Pra testares
-
-
+# Mudei o código outra vez, agora para ligar a base de dados só precisamos de fazer 1 vez quando ligarmos a API (no futuro) ou seja
+# só vai demorar muito uma vez e depois é sempre instantâneo
+# Este método abaixo vai buscar os dados de todos os hospitais e os tempos de espera de todas as cores
 db.fetch_and_process_hospitals_data()
-# Red,Orange,Yellow,Green,Blue
 
-
+# Para fazeres a matriz vais precisares de uma lista com as distâncias entre a origem e cada hospital
+# este método recebe a origem, os hospitais e o método de transporte e retorna uma lista de par ID de Hospistal e Tempo
 origin = "Rua Doutor António José de Almeida 628 Gueifães Maia 4470-017"
+res = routeFetcher.calculate_distance_duration(origin,db.hospitals)
+print(res)
 
-db.get_pacient_distance_duration_waiting_time("Green",origin)
-print(db)
+# Este método faz a mesma coisa  que o de cima só que recebe uma cor e retorna uma lista de par ID de Hospistal e Tempo de Espera no Hospital
+res = db.get_hospitals_by_color("Yellow")
+print(res)
