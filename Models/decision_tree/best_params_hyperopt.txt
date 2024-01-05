@@ -1,0 +1,1 @@
+{'criterion': 1, 'max_depth': 12.0, 'max_features': 1, 'min_impurity_decrease': 0.0, 'min_samples_leaf': 3.0, 'min_samples_split': 10.0, 'splitter': 0}

@@ -1,0 +1,1 @@
+{'estimators': 18, 'max_features': 1, 'min_sample_leaf': 4, 'n_jobs': 3, 'oob_score': 1, 'random_state': 7}

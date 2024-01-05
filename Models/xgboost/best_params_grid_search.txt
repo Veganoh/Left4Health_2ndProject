@@ -1,0 +1,1 @@
+{'n_estimators': 97, 'min_child_weight': 4, 'max_depth': 51, 'learning_rate': 1.205, 'grow_policy': 'lossguide', 'gamma': 0.9001, 'booster': 'dart'}
