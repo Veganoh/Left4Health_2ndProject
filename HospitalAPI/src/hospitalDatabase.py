@@ -3,9 +3,6 @@ import json
 from hospital import Hospital
 from concurrent.futures import ThreadPoolExecutor
 
-import math
-import routeFetcher
-
 class HospitalDatabase:
     MAX_RETRIES = 2
     INSTITUTION_URL = "https://tempos.min-saude.pt/api.php/institution"
@@ -28,30 +25,33 @@ class HospitalDatabase:
             data = json.loads(response.content.decode("utf-8-sig"))
 
             hospitals_data = data.get("Result", [])
-            self.hospitals = [Hospital(id=hospital["Id"], name=hospital["Name"], address=hospital["Address"])
+            self.hospitals = [Hospital(id=hospital["Id"], name=hospital["Name"], address=hospital["Address"], latitude=hospital["Latitude"], longitude=hospital["Longitude"])
                               for hospital in hospitals_data if hospital.get("HasEmergency", False)]
-
+            self.process_waiting_times()
 
         except requests.RequestException as e:
             print(f"Failed to fetch or process data. Error: {e}")
 
-    def get_waiting_times(self, color):
+        print("Os dados hospitalares foram adquiridos com sucesso!")
+
+
+    def process_waiting_times(self):
         try:
             with ThreadPoolExecutor() as executor:
-                futures = [executor.submit(self.fetch_hospital_waiting_times, hospital, color) for hospital in
+                futures = [executor.submit(self.fetch_hospital_waiting_times, hospital) for hospital in
                            self.hospitals]
                 wait_times = [future.result() for future in futures]
 
                 for hospital, wait_time in zip(self.hospitals, wait_times):
-                    hospital.current_wait_time_pacient = wait_time
+                    hospital.current_wait_time = wait_time
 
         except requests.RequestException as e:
             print(f"Failed to fetch or process data. Error: {e}")
 
-    def fetch_hospital_waiting_times(self, hospital, color):
+    def fetch_hospital_waiting_times(self, hospital):
         for retry in range(self.MAX_RETRIES + 1):
             try:
-                response = requests.get(f"{self.STANDBY_TIME_URL}{hospital.id}", timeout=3)
+                response = requests.get(f"{self.STANDBY_TIME_URL}{hospital.id}", timeout=1)
                 response.raise_for_status()
 
                 content = response.content.decode("utf-8-sig")
@@ -65,41 +65,31 @@ class HospitalDatabase:
 
                     if urgency_general_queues:
                         first_occurrence = urgency_general_queues[0]
-                        return first_occurrence.get(color, {}).get('Time', None)
+                        return {
+                            "Red": first_occurrence.get("Red", {}).get("Time",None),
+                            "Orange": first_occurrence.get("Orange", {}).get("Time",None),
+                            "Yellow": first_occurrence.get("Yellow", {}).get("Time",None),
+                            "Green": first_occurrence.get("Green", {}).get("Time",None),
+                            "Blue": first_occurrence.get("Blue", {}).get("Time",None),
+                        }
                     else:
-                        return math.inf
+                        return "N/A"
                 else:
-                    return math.inf
+                    return "N/A"
 
             except requests.Timeout:
                 if retry < self.MAX_RETRIES:
                     pass
                 else:
-                    return math.inf
+                    return "N/A"
 
             except requests.RequestException:
-                return math.inf
+                return "N/A"
 
-    def update_distances_and_durations(self, origin):
-        try:
-            with ThreadPoolExecutor() as executor:
-                futures = [executor.submit(self.calculate_and_update_distance_duration, hospital, origin)
-                           for hospital in self.hospitals]
-                results = [future.result() for future in futures]
+        # for a given color gives the pair ID and wait time of each hospital
 
-                for hospital, (distance, duration) in zip(self.hospitals, results):
-                    hospital.distance_from_current_pacient = distance
-                    hospital.duration_from_current_pacient = duration
+    def get_hospitals_by_color(self, color):
+        hospitals_info = [{"ID": hospital.id, "Wait Time": hospital.get_wait_time(color)} for hospital in self.hospitals]
+        hospitals_info.sort(key=lambda x: x['ID'])
 
-        except Exception as e:
-            print(f"Failed to update distances and durations. Error: {e}")
-
-    def calculate_and_update_distance_duration(self, hospital, origin):
-        try:
-            destination = hospital.address
-            distance, duration = routeFetcher.calculate_distance_duration(origin, destination)
-            return distance, duration
-
-        except Exception as e:
-            print(f"Failed to calculate distance and duration for {hospital.name}. Error: {e}")
-            return math.inf, math.inf
+        return hospitals_info

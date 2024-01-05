@@ -1,28 +1,61 @@
 import os
 from dotenv import load_dotenv
 import googlemaps
-import math
 
-def calculate_distance_duration(origin, destination):
-    load_dotenv()
-    api_key = os.getenv("API_KEY")
+load_dotenv()
+api_key = os.getenv("API_KEY")
+gmaps = googlemaps.Client(key=api_key)
 
-    gmaps = googlemaps.Client(key=api_key)
 
+def duration_to_seconds(duration_str):
+    parts = duration_str.split()
+
+    total_seconds = 0
+    i = 0
+    while i < len(parts):
+        try:
+            value = int(parts[i])
+        except ValueError:
+            i += 1
+            continue
+        unit = parts[i + 1].lower()
+        unit = unit.rstrip('s')
+        if 'day' in unit:
+            total_seconds += value * 86400
+        elif 'hour' in unit:
+            total_seconds += value * 3600
+        elif 'min' in unit:
+            total_seconds += value * 60
+        elif 'sec' in unit:
+            total_seconds += value
+        i += 2
+
+    if total_seconds == 0 : return 999999999
+
+    return total_seconds
+
+
+def calculate_distance_duration(origin, mode, hospitals):
     try:
-        matrix = gmaps.distance_matrix(origin, destination)
+        batch_size = 25
+        result = []
 
-        # Check if the response has the expected structure
-        if 'rows' in matrix and matrix['rows'] and 'elements' in matrix['rows'][0] and matrix['rows'][0]['elements']:
-            distance = matrix['rows'][0]['elements'][0].get('distance', {}).get('text', 'N/A')
-            duration = matrix['rows'][0]['elements'][0].get('duration', {}).get('text', 'N/A')
+        for i in range(0, len(hospitals), batch_size):
+            batch_hospitals = hospitals[i:i + batch_size]
+            destinations = [hospital.address for hospital in batch_hospitals]
 
-            if distance == 'N/A' or duration == 'N/A':
-                return math.inf, math.inf
-        else:
-            raise ValueError("Unexpected response structure from Google Maps API.")
+            matrix = gmaps.distance_matrix(origin, destinations, mode=mode)
+
+            if 'rows' in matrix and matrix['rows']:
+                for row in matrix['rows']:
+                    elements = row.get('elements', [])
+                    for hospital, element in zip(batch_hospitals, elements):
+                        duration_str = element.get('duration', {}).get('text', 'N/A')
+                        duration_seconds = duration_to_seconds(duration_str)
+                        result.append({'ID': hospital.id, 'Duration': duration_seconds})
+
+        result.sort(key=lambda x: x['ID'])
+        return result
 
     except googlemaps.exceptions.ApiError as e:
         raise ValueError(f"Error from Google Maps API: {str(e)}")
-
-    return distance, duration
