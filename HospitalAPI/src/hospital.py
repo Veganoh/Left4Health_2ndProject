@@ -3,11 +3,15 @@ class Hospital:
     name = None
     address = None
     current_wait_time = None
+    latitude = None
+    longitude = None
 
-    def __init__(self, id, name, address):
+    def __init__(self, id, name, address, latitude, longitude):
         self.id = id
         self.name = name
         self.address = address
+        self.latitude = latitude
+        self.longitude = longitude
 
 
     #hospital to string

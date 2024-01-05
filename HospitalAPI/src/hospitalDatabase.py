@@ -25,7 +25,7 @@ class HospitalDatabase:
             data = json.loads(response.content.decode("utf-8-sig"))
 
             hospitals_data = data.get("Result", [])
-            self.hospitals = [Hospital(id=hospital["Id"], name=hospital["Name"], address=hospital["Address"])
+            self.hospitals = [Hospital(id=hospital["Id"], name=hospital["Name"], address=hospital["Address"], latitude=hospital["Latitude"], longitude=hospital["Longitude"])
                               for hospital in hospitals_data if hospital.get("HasEmergency", False)]
             self.process_waiting_times()
 

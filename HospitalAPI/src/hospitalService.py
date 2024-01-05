@@ -36,6 +36,8 @@ class HospitalService:
             "address": hospital.address,
             "wait_time": self.get_waiting_time_by_id(self.wait_times, hospital.id),
             "duration": self.get_duration_by_id(self.duration_times, hospital.id),
+            "latitude": hospital.latitude,
+            "longitude": hospital.longitude,
 
         }
 
