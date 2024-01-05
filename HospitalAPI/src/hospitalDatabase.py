@@ -3,9 +3,6 @@ import json
 from hospital import Hospital
 from concurrent.futures import ThreadPoolExecutor
 
-import math
-import routeFetcher
-
 class HospitalDatabase:
     MAX_RETRIES = 2
     INSTITUTION_URL = "https://tempos.min-saude.pt/api.php/institution"

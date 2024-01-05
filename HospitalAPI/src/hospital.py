@@ -1,5 +1,3 @@
-import math
-
 class Hospital:
     id = None
     name = None
