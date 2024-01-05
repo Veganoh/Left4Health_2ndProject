@@ -43,7 +43,6 @@ class Topsis:
         self.calculate_separation_measures()
         self.calculate_relative_distance()
         self.rank_alternatives()
-        self.print_ranked_alternatives()
 
     def create_evaluation_matrix(self):
         wait_times = [item['Wait Time'] for item in self.waiting_times]

@@ -32,6 +32,9 @@ class HospitalDatabase:
         except requests.RequestException as e:
             print(f"Failed to fetch or process data. Error: {e}")
 
+        print("Os dados hospitalares foram adquiridos com sucesso!")
+
+
     def process_waiting_times(self):
         try:
             with ThreadPoolExecutor() as executor:

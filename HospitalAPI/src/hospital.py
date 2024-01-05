@@ -12,7 +12,7 @@ class Hospital:
 
     #hospital to string
     def __str__(self):
-        return f"{self.id} - {self.current_wait_time} "
+        return f"{self.id} - {self.name} - {self.address} "
 
     def get_wait_time(self, color):
         if isinstance(self.current_wait_time, dict):

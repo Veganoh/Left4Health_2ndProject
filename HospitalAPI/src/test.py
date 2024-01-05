@@ -1,7 +1,6 @@
 import routeFetcher
 from hospitalDatabase import HospitalDatabase
 from topsis import Topsis
-import numpy as np
 
 
 db = HospitalDatabase()
@@ -13,7 +12,7 @@ db.fetch_and_process_hospitals_data()
 
 # Para fazeres a matriz vais precisares de uma lista com as distâncias entre a origem e cada hospital
 # este método recebe a origem, os hospitais e o método de transporte e retorna uma lista de par ID de Hospistal e Tempo
-origin = "Av. Rainha D. Amélia 6301-857 Guarda"
+origin = "Rua Doutor Antonio José de Almeida, 4470-017"
 # Mode: driving, walking, bicycling, transit
 duration_times = routeFetcher.calculate_distance_duration(origin, "walking", db.hospitals)
 print(duration_times)
