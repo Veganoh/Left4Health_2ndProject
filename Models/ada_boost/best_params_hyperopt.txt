@@ -1,1 +1,1 @@
-{'algorithm': 0, 'estimators': 51, 'learning_rate': 0.6000000000000001}
+{'algorithm': 0, 'estimators': 26, 'learning_rate': 0.9}
