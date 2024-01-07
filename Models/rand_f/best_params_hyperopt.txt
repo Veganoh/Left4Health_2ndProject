@@ -1,1 +1,1 @@
-{'estimators': 91, 'max_features': 0, 'min_sample_leaf': 0, 'n_jobs': 8, 'oob_score': 0, 'random_state': 0}
+{'estimators': 87, 'max_features': 1, 'min_sample_leaf': 2, 'n_jobs': 7, 'oob_score': 1, 'random_state': 7}

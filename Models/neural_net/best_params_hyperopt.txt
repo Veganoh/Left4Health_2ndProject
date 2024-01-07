@@ -1,1 +1,1 @@
-{'activation': 1, 'alpha': 0.77, 'hidden_layer': 2, 'learning_rate': 0, 'solver': 0}
+{'activation': 0, 'alpha': 0.56, 'hidden_layer': 3, 'learning_rate': 1, 'solver': 0}
