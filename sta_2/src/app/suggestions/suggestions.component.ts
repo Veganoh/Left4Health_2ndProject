@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { HospitalService } from '../services/hospital.service';
 import { Hospital } from '../domain/hospital';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-suggestions',
