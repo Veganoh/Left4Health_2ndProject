@@ -4,6 +4,7 @@ from hospitalService import HospitalService
 
 app = Flask(__name__)
 
+
 class MyApp:
     def __init__(self):
         self.hospital_db = HospitalDatabase()
@@ -13,11 +14,20 @@ class MyApp:
     def get_hospital_service(self):
         return self.hospital_service
 
+
 my_app = MyApp()
 
-# Rota para obter as melhores alternativas
-@app.route('/api/best_alternatives', methods=['POST'])
+
+@app.route('/api/best_alternatives', methods=['POST', 'OPTIONS'])
 def best_alternatives():
+    if request.method == 'OPTIONS':
+        headers = {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'POST',
+            'Access-Control-Allow-Headers': 'Content-Type',
+        }
+        return ('', 204, headers)
+
     data = request.get_json()
 
     origin = data.get('origin', '')
@@ -35,7 +45,12 @@ def best_alternatives():
 
     hospital_service = my_app.get_hospital_service()
     best_alternatives = hospital_service.get_best_alternatives(origin, color, weights, transport)
-    return jsonify({'best_alternatives': best_alternatives})
+
+    response = jsonify({'best_alternatives': best_alternatives})
+    response.headers.add('Access-Control-Allow-Origin', '*')
+
+    return response
+
 
 if __name__ == '__main__':
     app.run(debug=False)

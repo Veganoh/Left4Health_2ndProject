@@ -41,6 +41,6 @@ print(result_list)
 weights = [0.5, 0.5]
 
 tp = Topsis(wait_times, duration_times, weights)
-print(tp.get_best_alternatives())
+print(tp.print_evaluation_matrix())
 
 

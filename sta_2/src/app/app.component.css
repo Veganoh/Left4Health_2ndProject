@@ -1,0 +1,33 @@
+.suggestions-container {
+    /* Adicione estilos para a div principal aqui */
+  }
+  
+  .section-title {
+    margin-bottom: 20px;
+  }
+  
+  .section-divider {
+    margin-bottom: 20px;
+  }
+  
+  .questoes-label {
+    font-weight: bold;
+  }
+  
+  .form-control {
+    width: 600px;
+  }
+  
+  .radio-label {
+    margin-right: 10px;
+    margin-left: 100px;
+  }
+  
+  .submit-button {
+    display: block;
+    margin: 0 auto;
+    width: 800px;
+  }
+  
+  /* Adicione mais estilos conforme necessário */
+  
