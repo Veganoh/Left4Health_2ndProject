@@ -1,13 +1,112 @@
-<div class="suggestions">
-  <h2>Sugestões de Hospitais</h2>
-  <ul>
-    <li *ngFor="let hospital of suggestedHospitals">
-      <div class="hospital-card">
-        <h3>{{ hospital.name }}</h3>
-        <p class="hospital-info">Endereço: {{ hospital.address }}</p>
-        <p class="hospital-info">Distância: {{ hospital.distance }} km</p>
-        <p class="hospital-info">Tempo de Espera: {{ hospital.wait_time }} minutos</p>
+<div class="suggestions-container">
+  <header>
+    <h2>LEFT 4 HEALTH</h2>
+  </header>
+  <main>
+    <section class="suggestions-form">
+      <div class="suggestions-content">
+        <h2 style="margin-bottom: 20px;">Sugestões</h2>
+        <hr style="margin-bottom: 20px;">
+        <form>
+           <!-- Color -->
+          <div class="questoes">
+            <label style="font-weight: bold;" for="local">Local onde se encontra:</label>
+            <input type="text" id="q{{ 22 }}" name="q{{ 22 }}" (input)="atualizarlocal($event)">
+          </div>
+                     <!-- Temperatura corporal -->
+                     <div class="questoes1">
+                      <p style="font-weight: bold;" >Cor da triagem</p>
+                      <div class="resposta">
+                        <select style="width: 600px;" class="form-control" 
+                        (change)="selecionarOpcaoColor($event)">
+                                id="q{{ 30 }}"
+                                name="q{{ 30 }}">
+                                <option value="">Escolha uma opção</option>
+                          <option value="Red">Red</option>
+                          <option value="Orange">Orange</option>
+                          <option value="Yellow">Yellow</option>
+                          <option value="Green">Green</option>
+                          <option value="Blue">Blue</option>
+                        </select>
+                      </div>
+                    </div>
+                        <!-- Transporte -->
+                        <div class="questoes">
+                          <p style="font-weight: bold;" >Modo de transporte</p>
+                          <div class="resposta">
+                            <select style="width: 600px;" class="form-control" 
+                            (change)="selecionarOpcaoTransporte($event)">
+                                    id="q{{ 30 }}"
+                                    name="q{{ 30 }}">
+                                    <option value="">Escolha uma opção</option>
+                              <option value="driving">driving</option>
+                              <option value="walking">walking</option>
+                              <option value="bicycling">bicycling</option>
+                              <option value="transit">transit</option>
+                            </select>
+                          </div>
+                        </div>
+                                  <!-- Local -->
+          <div class="questoes">
+            <div class="resposta">
+              <label>
+                <h2 style="margin-right: 10px;"></h2>  
+                <input type="radio"
+                       id="q21"
+                       name="q21"
+                       (change)="selecionarOpcao($event, '0.5,0.5')"
+                       value="value1">
+                       Prefere chegar mais Rápido ao hospital 
+              </label>
+              <h2 style="margin-left: 100px;"></h2>              
+              <br>
+              <label>
+                <input type="radio"
+                       id="q21"
+                       name="q21"
+                       (change)="selecionarOpcao($event, '0.75,0.25')"
+                       value="value2">
+                       Prefere demorar menos tempo nas urgências
+              </label> 
+              <br>
+            </div>
+          </div>           
+         <!-- btn -->
+          <button style="display: block; margin: 0 auto; width: 800px;" (click)="submeterRespostas()">Submeter</button>
+        </form>
       </div>
-    </li>
-  </ul>
+      <div *ngIf="(click)">
+<!-- meu-componente.component.html -->
+
+<table style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="padding: 8px;">ID</th>
+      <th style="padding: 8px;">Nome</th>
+      <th style="padding: 8px;">Endereço</th>
+      <th style="padding: 8px;">Duração</th>
+      <th style="padding: 8px;">Tempo de Espera</th>
+    </tr>
+  </thead>
+  <tbody >
+    <ng-container *ngIf="getHospitais().length > 0">
+      <tr *ngFor="let hospital of getHospitais()">
+        <td style="padding: 8px;">{{ hospital.id }}</td>
+        <td style="padding: 8px;">{{ hospital.name }}</td>
+        <td style="padding: 8px;">{{ hospital.adress }}</td>
+        <td style="padding: 8px;">{{ hospital.duration }}</td>
+        <td style="padding: 8px;">{{ hospital.wait_time }}</td>
+      </tr>
+    </ng-container>
+    <tr *ngIf="getHospitais().length === 0">
+      <td colspan="5">Nenhum dado disponível</td>
+    </tr>
+  </tbody>
+</table>
+      </div>
+    </section>
+  </main>
 </div>
+
+
+

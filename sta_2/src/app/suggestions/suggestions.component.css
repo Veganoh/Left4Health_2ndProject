@@ -1,41 +1,111 @@
-.suggestions {
-  font-family: Arial, sans-serif;
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.suggestions h2 {
-  text-align: center;
-  color: #333;
-}
-
-.suggestions ul {
-  list-style: none;
+* {
+  margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
-.hospital-card {
-  border: 1px solid #ddd;
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  overflow: hidden;
+}
+
+.diagnostico-container {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: left;
+  min-height: auto;
+  text-align: center;
+  padding: 20px;
+}
+
+.diagnostico-content {
+  background-color: #F5F5F0;
+  padding: 40px;
   border-radius: 8px;
-  padding: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  width: 100%; 
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.questoes,
+.questoes1 {
+  width: calc(50% - 20px); /* Define a largura para 50% do container */
   margin-bottom: 20px;
-  background-color: #f9f9f9;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  padding: 0 10px;
 }
 
-.hospital-card h3 {
-  margin-top: 0;
-  color: #333;
+.questoes {
+  float: left;
+  clear: left;
 }
 
-.hospital-info {
-  color: #666;
-  margin: 8px 0;
+.questoes1 {
+  float: right;
+  clear: right;
 }
 
-/* Responsividade */
-@media screen and (max-width: 768px) {
-  .suggestions {
-    max-width: 90%;
-  }
+.resposta.sexo {
+  display: flex;
+  align-items: center;
+}
+
+.resposta {
+  display: flex;
+  align-items: center;
+  margin-top: 10px; 
+}
+
+.resposta select {
+  margin-left: 10px; 
+}
+
+.resposta.sexo label {
+  margin-right: 20px;
+}
+
+.sexo-options input[type="radio"] {
+  margin-right: 5px;
+}
+
+button {
+  margin-top: 30px;
+  padding: 12px 24px;
+  font-size: 1.2rem;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+header {
+  position: relative;
+  width: 100%;
+  background: linear-gradient(to right, #ff6f61, #77dd77, #4285f4); /* Degrade de vermelho para verde e depois para azul */
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h2 {
+  font-size: 2rem;
+  color: #efcaca;
+  margin: 0;
+  padding: 0;
+  text-align: left;
 }
