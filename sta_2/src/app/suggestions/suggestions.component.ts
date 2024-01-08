@@ -15,6 +15,8 @@ export class SuggestionsComponent {
   preference: string = '';
   bestAlternatives: Hospital[] = [];
   errorMessage: string = '';
+  currentHospitalIndex: number = 0;
+
 
   constructor(private hospitalService: HospitalService) {}
 
@@ -65,5 +67,17 @@ export class SuggestionsComponent {
         this.errorMessage = 'Erro ao obter melhores alternativas. Por favor, tente novamente mais tarde.';
       }
     );
+  }
+
+  showPreviousHospital() {
+    if (this.currentHospitalIndex > 0) {
+      this.currentHospitalIndex--;
+    }
+  }
+
+  showNextHospital() {
+    if (this.currentHospitalIndex < this.bestAlternatives.length - 1) {
+      this.currentHospitalIndex++;
+    }
   }
 }

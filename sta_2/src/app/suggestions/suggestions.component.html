@@ -41,12 +41,21 @@
  
   <div *ngIf="bestAlternatives && bestAlternatives.length > 0" class="best-alternatives">
     <h2>Melhores Alternativas:</h2>
-    <div *ngFor="let hospital of bestAlternatives">
+    <div *ngIf="currentHospitalIndex >= 0 && currentHospitalIndex < bestAlternatives.length">
       <div class="hospital-info">
-        <h3>{{ hospital.name }}</h3>
-        <p>Endereço: {{ hospital.address }}</p>
-        <p>Tempo de Espera: {{ convertSecondsToTime(hospital.wait_time) }}</p>
-        <p>Duração da Viagem: {{ convertSecondsToTime(hospital.duration) }}</p>
+        <h3>{{ bestAlternatives[currentHospitalIndex].name }}</h3>
+        <p>Endereço: {{ bestAlternatives[currentHospitalIndex].address }}</p>
+        <p>Tempo de Espera: {{ convertSecondsToTime(bestAlternatives[currentHospitalIndex].wait_time) }}</p>
+        <p>Duração da Viagem: {{ convertSecondsToTime(bestAlternatives[currentHospitalIndex].duration) }}</p>
+      </div>
+
+      <div class="hospital-map">
+        <app-google-maps [latitude]="bestAlternatives[currentHospitalIndex].latitude" [longitude]="bestAlternatives[currentHospitalIndex].longitude"></app-google-maps>
+      </div>
+
+      <div class="navigation-buttons">
+        <button (click)="showPreviousHospital()" [disabled]="currentHospitalIndex === 0">Anterior</button>
+        <button (click)="showNextHospital()" [disabled]="currentHospitalIndex === bestAlternatives.length - 1">Próximo</button>
       </div>
     </div>
   </div>
@@ -59,3 +68,4 @@
     <p>{{ errorMessage }}</p>
   </div>
 </div>
+
