@@ -94,7 +94,7 @@ button:hover {
 header {
   position: relative;
   width: 100%;
-  background: linear-gradient(to right, #ff6f61, #77dd77, #4285f4); /* Degrade de vermelho para verde e depois para azul */
+  background: linear-gradient(to right, #ff6f61, #77dd77, #4285f4);
   padding: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   display: flex;

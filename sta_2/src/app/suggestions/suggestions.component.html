@@ -1,39 +1,44 @@
 <!-- suggestions.component.html -->
-<div class="suggestion-component">
+<div class="diagnostico-container">
+  <header>
+    <h2>LEFT 4 HEALTH</h2>
+  </header>
+  <main>
+    <div class="suggestion-component">
 
-  <div class="local-component">
-    <label for="local-input">Localização:</label>
-    <input type="text" id="local-input" [(ngModel)]="local" name="local" placeholder="Digite o local...">
-  </div>
+      <div class="local-component">
+        <label for="local-input">Localização:</label>
+        <input type="text" id="local-input" [(ngModel)]="local" name="local" placeholder="Digite o local...">
+      </div>
 
-  <div class="transport-method">
-    <label for="transport-dropdown">Método de Transporte:</label>
-    <select id="transport-dropdown" [(ngModel)]="transport" name="transport">
-      <option value="driving">Carro</option>
-      <option value="walking">A pé</option>
-      <option value="bicycling">Bicicleta</option>
-      <option value="transit">Transportes Públicos</option>
-    </select>
-  </div>
+      <div class="transport-method">
+        <label for="transport-dropdown">Método de Transporte:</label>
+        <select id="transport-dropdown" [(ngModel)]="transport" name="transport">
+          <option value="driving">Carro</option>
+          <option value="walking">A pé</option>
+          <option value="bicycling">Bicicleta</option>
+          <option value="transit">Transportes Públicos</option>
+        </select>
+      </div>
 
-  <div class="bracelet-color">
-    <label for="bracelet-dropdown">Cor da Pulseira:</label>
-    <select id="bracelet-dropdown" [(ngModel)]="braceletColor" name="braceletColor">
-      <option value="Red">Vermelho</option>
-      <option value="Orange">Laranja</option>
-      <option value="Yellow">Amarelo</option>
-      <option value="Green">Verde</option>
-      <option value="Blue">Azul</option>
-    </select>
-  </div>
+      <div class="bracelet-color">
+        <label for="bracelet-dropdown">Cor da Pulseira:</label>
+        <select id="bracelet-dropdown" [(ngModel)]="braceletColor" name="braceletColor">
+          <option value="Red">Vermelho</option>
+          <option value="Orange">Laranja</option>
+          <option value="Yellow">Amarelo</option>
+          <option value="Green">Verde</option>
+          <option value="Blue">Azul</option>
+        </select>
+      </div>
 
-  <div class="preference">
-    <label for="preference-radio">Preferência:</label>
-    <input type="radio" id="nearest-hospital" [(ngModel)]="preference" name="preference" value="nearest-hospital">
-    <label for="nearest-hospital">Hospital Mais Próximo</label>
+      <div class="preference">
+        <label for="preference-radio">Preferência:</label>
+        <input type="radio" id="nearest-hospital" [(ngModel)]="preference" name="preference" value="nearest-hospital">
+        <label for="nearest-hospital">Hospital Mais Próximo</label>
 
-    <input type="radio" id="shortest-wait-time" [(ngModel)]="preference" name="preference" value="shortest-wait-time">
-    <label for="shortest-wait-time">Tempo de Espera Mais Curto</label>
+        <input type="radio" id="shortest-wait-time" [(ngModel)]="preference" name="preference" value="shortest-wait-time">
+        <label for="shortest-wait-time">Tempo de Espera Mais Curto</label>
 
     <input type="radio" id="no-preference" [(ngModel)]="preference" name="preference" value="no-preference">
     <label for="no-preference">Nenhuma Preferência</label>
@@ -58,14 +63,6 @@
         <button (click)="showNextHospital()" [disabled]="currentHospitalIndex === bestAlternatives.length - 1">Próximo</button>
       </div>
     </div>
-  </div>
-
-  <div class="submit-button">
-    <button (click)="handleSuggestion()">Obter as melhores alternativas</button>
-  </div>
-
-  <div *ngIf="errorMessage" class="error-message">
-    <p>{{ errorMessage }}</p>
-  </div>
+  </main>
 </div>
 

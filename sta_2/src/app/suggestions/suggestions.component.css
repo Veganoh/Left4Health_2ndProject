@@ -1,66 +1,99 @@
-/* styles.css */
-
-body {
-  font-family: 'Arial', sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f0f0f0;
-}
-
-.content {
-  max-width: 600px;
-  margin: 20px auto;
-  background-color: #fff;
+/* Estilos para o layout geral */
+.diagnostico-container {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
   padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  min-height: 100vh;
 }
 
+header {
+  width: 100%;
+  background: linear-gradient(to right, #ff6f61, #77dd77, #4285f4);
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+header h2 {
+  font-size: 2rem;
+  color: #fff;
+  margin: 0;
+}
+
+main {
+  width: 100%;
+  padding: 0 20px; /* Adicionando um espaçamento lateral */
+  box-sizing: border-box; /* Garantindo que o padding não incremente a largura */
+}
+
+/* Estilos para os elementos do formulário */
 .suggestion-component {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
 }
 
 .local-component,
 .transport-method,
 .bracelet-color,
-.preference,
-.submit-button {
-  margin-bottom: 15px;
+.preference {
+  margin-bottom: 20px;
 }
 
 label {
   display: block;
   margin-bottom: 5px;
+  font-weight: bold;
 }
 
 input[type="text"],
-select {
+select,
+button {
   width: 100%;
   padding: 8px;
-  box-sizing: border-box;
+  border-radius: 5px;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  box-sizing: border-box; /* Garantindo que o padding não incremente a largura */
 }
 
+/* Estilos para a seção de preferências */
+.preference {
+  margin-bottom: 20px;
+}
+
+.preference input[type="radio"],
 .preference label {
-  display: inline-block;
   margin-right: 10px;
+  vertical-align: middle;
+  font-weight: normal; /* Removendo o negrito dos botões de rádio */
 }
 
-input[type="radio"] {
-  margin-right: 5px;
+.error-message {
+  color: #ff0000;
+  margin-top: 10px;
 }
 
-button {
-  background-color: #4caf50;
-  color: #fff;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 16px;
+.best-alternatives {
+  margin-top: 20px;
 }
 
-button:hover {
-  background-color: #45a049;
+.hospital-info {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
 }
+
+/* Media Query para telas menores */
+@media (max-width: 600px) {
+  .local-component,
+  .transport-method,
+  .bracelet-color,
+  .preference {
+    margin-bottom: 15px;
+  }
+}
+
