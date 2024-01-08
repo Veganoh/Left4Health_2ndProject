@@ -63,6 +63,7 @@ button {
 /* Estilos para a seção de preferências */
 .preference {
   margin-bottom: 20px;
+  display: flex;
 }
 
 .preference input[type="radio"],
