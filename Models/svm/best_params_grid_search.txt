@@ -1,1 +1,1 @@
-{'C': 0.7100000000000001, 'kernel': 'linear', 'probability': True}
+{'C': 0.6100000000000001, 'kernel': 'linear', 'probability': True}

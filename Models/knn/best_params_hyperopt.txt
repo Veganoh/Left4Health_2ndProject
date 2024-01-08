@@ -1,1 +1,1 @@
-{'algorithm': 2, 'leaf_size': 22, 'metric': 0, 'n_neighbors': 6, 'p': 1, 'weights': 1}
+{'algorithm': 0, 'leaf_size': 5, 'metric': 1, 'n_neighbors': 27, 'p': 0, 'weights': 1}
