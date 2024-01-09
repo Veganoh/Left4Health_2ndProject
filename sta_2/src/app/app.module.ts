@@ -11,6 +11,7 @@ import { HomeComponent } from './home/home.component';
 import { DiagnosticoComponent } from './diagnostico/diagnostico.component';
 import { FormsModule } from '@angular/forms';
 import { GoogleMapsComponent } from './google-maps/google-maps.component';
+import { DiagnosisComponent } from './diagnosis/diagnosis.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { GoogleMapsComponent } from './google-maps/google-maps.component';
     SuggestionsComponent,
     HomeComponent,
     DiagnosticoComponent,
-    GoogleMapsComponent
+    GoogleMapsComponent,
+    DiagnosisComponent
   ],
   imports: [
     BrowserModule,

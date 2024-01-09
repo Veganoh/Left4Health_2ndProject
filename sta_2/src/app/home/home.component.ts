@@ -11,6 +11,6 @@ export class HomeComponent {
 
   iniciarDiagnostico(): void {
     // Aqui você pode redirecionar para a página do diagnóstico
-    this.router.navigate(['/diagnostico']); // Certifique-se de criar essa rota no próximo passo
+    this.router.navigate(['/diagnosis']); // Certifique-se de criar essa rota no próximo passo
   }
 }
