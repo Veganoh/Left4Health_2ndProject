@@ -1,0 +1,43 @@
+<div class="modal fade" id="myModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{ this.title }}</h5>
+  
+        </div>
+        <div class="modal-body">
+          <ng-content></ng-content>
+          <div *ngIf="this.triage === 1">
+            Vermelho
+          </div>
+          <div *ngIf="this.triage === 2">
+            Laranja
+          </div>
+          <div *ngIf="this.triage === 3">
+            Amarelo
+          </div>
+          <div *ngIf="this.triage === 4">
+            Verde
+          </div>
+          <div *ngIf="this.triage === 5">
+            Azul
+          </div>
+
+
+        </div>
+
+
+
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="close()">
+            Fechar
+          </button>
+          <button id="submit-btn" type="submit" class="btn btn-primary" (click)="submit()">
+            Procurar Hospital
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  

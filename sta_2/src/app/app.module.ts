@@ -9,7 +9,8 @@ import { AppComponent } from './app.component';
 import { SuggestionsComponent } from './suggestions/suggestions.component';
 import { HomeComponent } from './home/home.component';
 import { GoogleMapsComponent } from './google-maps/google-maps.component';
-import { DiagnosisComponent } from './diagnosis/diagnosis.component'; // Renomeado para DiagnosisComponent
+import { DiagnosisComponent } from './diagnosis/diagnosis.component';
+import { ModalComponent } from './modal/modal.component'; // Renomeado para DiagnosisComponent
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { DiagnosisComponent } from './diagnosis/diagnosis.component'; // Renomea
     SuggestionsComponent,
     HomeComponent,
     GoogleMapsComponent,
-    DiagnosisComponent // Adicionado o DiagnosisComponent
+    DiagnosisComponent,
+    ModalComponent // Adicionado o DiagnosisComponent
   ],
   imports: [
     BrowserModule,

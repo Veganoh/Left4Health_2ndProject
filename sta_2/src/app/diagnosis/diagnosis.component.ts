@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DiagnosisService } from '../services/diagnosis.service';
+import { BehaviorSubject } from 'rxjs';
+
 
 @Component({
   selector: 'app-diagnosis',
@@ -7,6 +9,9 @@ import { DiagnosisService } from '../services/diagnosis.service';
   styleUrls: ['./diagnosis.component.css']
 })
 export class DiagnosisComponent implements OnInit {
+
+  isModalShown: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+
 
   showPainField: boolean = false;
 
@@ -23,7 +28,7 @@ export class DiagnosisComponent implements OnInit {
   arrivalMode: string = '';
   symptoms: string = '';
 
-  triage: string = '';
+  triage: number = 0;
 
 
   constructor(private diagnosisService : DiagnosisService) { }
@@ -63,6 +68,10 @@ export class DiagnosisComponent implements OnInit {
         console.log(error);
       }
     );
+
+    this.triage = 2;
+    this.isModalShown.next(true);
+
     console.log(formData);
   };
 

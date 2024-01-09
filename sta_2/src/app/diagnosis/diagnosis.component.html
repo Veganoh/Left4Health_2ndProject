@@ -136,15 +136,18 @@
            </select>
         </div>
         <div>
-           <button type="button" [disabled]="!areAllFieldsFilled()" (click)="onSubmit()">Enviar</button>
+           <button type="button" [disabled]="!areAllFieldsFilled()" (click)="onSubmit()" data-toggle="modal" data-target="#myModal">Enviar</button>
         </div>
 
+      
         <div id="warning1"class="alert alert-warning" role="alert">
-          This is a warning alert—check it out!
-        </div>
+         Esta é uma previsão e não é 100% fiável. Utilize com discernimento.
+         </div>
 
         <div id="warning1"class="alert alert-warning" role="alert">
-          This is a warning alert—check it out!
+         Resultados podem ser mais precisos com dados adequados. Certifique-se de fornecer informações corretas.
         </div>
-     </form>
+
+        <app-modal [isShown]="isModalShown" [triage]="triage" [title]="'A sua triagem foi obtida com sucesso!'"></app-modal>
+      </form>
   </div>
