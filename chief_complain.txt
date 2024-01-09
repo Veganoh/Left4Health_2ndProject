@@ -1,0 +1,417 @@
+abd pain	72
+dyspnea	60
+dizziness	59
+fever	45
+ant. chest pain	44
+Open Wound	31
+headache	30
+epigastric pain	22
+mental change	22
+general weakness	21
+vomiting	16
+pain, chest	16
+hematemesis	14
+Abd. pain	12
+Left chest pain	12
+Lt flank pain	11
+syncope	10
+abdomen pain	10
+dysarthria	10
+Vaginal Bleeding	9
+palpitation	9
+facial injury	9
+Urticarial rash	8
+melena	8
+RUQ pain	8
+pain, abdominal	8
+H-Headache	7
+epistaxis	7
+post seizure	7
+pain, low back	7
+hematochezia	7
+Rt. flank pain	7
+HA	6
+ocular pain, Lt.	6
+ocular pain, Rt.	6
+anxiety	6
+diarrhea	6
+Ankle Injury	6
+Rt. side motor weakness	6
+cough	6
+distension, abd	6
+Discomfort, Chest	6
+skin rash	5
+pain, flank	5
+Convulsion	5
+??	5
+nausea	5
+RLQ pain	5
+upper abdominal pain	5
+LLQ pain	5
+acute epigastric pain	5
+dysuria	5
+myalgia	5
+both leg pain	5
+DZ - Dizziness	5
+leg pain	5
+vaginal bleeding	4
+LBP - Low back pain	4
+diffuse abdominal pain	4
+Rt abd pain	4
+acute dyspnea	4
+Facial Palsy	4
+chest palpitation	4
+finger laceration	4
+D - Diarrhea	4
+throat pain	4
+????	4
+hemoptysis	3
+whirling type vertigo	3
+Suicidal Attempt	3
+Arm Injury	3
+LOC - Loss of consciousness	3
+diffuse chest discomfort	3
+lip laceration	3
+Amnesia	3
+Abdominal pain (finding)	3
+voiding difficulty	3
+abdominal pain, Rt	3
+??? ??	3
+Finger Injury	3
+blurred vision	3
+ocular pain	3
+head trauma	3
+injury, finger	3
+sorethroat	3
+Lt. side weakness	3
+altered mentality	3
+post-CPR state	3
+sexual violence	3
+eyebrow laceration	3
+post neck pain	3
+LOC	3
+Motor weakness	3
+right motor weakness	2
+PTBD malfunction	2
+laceration, chin	2
+chest discomfort left	2
+rigth side weakness	2
+pain, foot	2
+?? ???	2
+RLQ abd. pain	2
+right ocular pain	2
+Foreign Body Sense	2
+Lt. hemiparesis	2
+for PEG tube change	2
+injury, ankle	2
+sezure like motion	2
+head injury	2
+Wrist Injury	2
+F/C, C/S	2
+hypoglycemic symptom	2
+abnormal lab.	2
+leg swelling, Lt.	2
+forehead laceration	2
+finger pain	2
+eye discomfort	2
+po medication	2
+left leg pain	2
+DI, drug intoxication	2
+ankle pain	2
+Foot Injury	2
+otalgia, Lt.	2
+eyelid laceration	2
+distended abdomen	2
+alcohol smelling state, drunken state	2
+left motor weakness	2
+backache	2
+pain, periumbilical	2
+facial palsy left	2
+???	2
+Rt hemiparesis	2
+Lt hemiparesis	2
+skin defect	2
+anterior chest discomfort	2
+for A/tapping	2
+low abdominal pain	2
+AVF malfunction	2
+Catheter removal	2
+fever & chill	2
+Blood Pressure, Low	2
+rt flank pain	2
+Pain, Hip	2
+Generalized abdominal pain	2
+right upper abdominal pain	2
+hematuria	2
+Flank pain, Rt.	2
+leg pain left	2
+HA - Headache	2
+watery diarrhea	2
+right hemiparesis	2
+?? ??	2
+knee pain	2
+Left leg pain	2
+swelling, facial	2
+Seizure Like Activity	2
+pain, arm	2
+face laceration	2
+Lt. hip joint pain	2
+With chest discomfort	2
+ascites tapping	2
+nasal bleeding	2
+upper back pain	2
+FB in eye	2
+scalp lac.	2
+rotatory vertigo	2
+loss of consciousness	2
+light headness	1
+vaginal discharge	1
+right hip pain	1
+for L-tube insertion	1
+left diplopia	1
+Voice changes	1
+swelling	1
+confuse mentality	1
+anemia w/u	1
+Foreign body in throat	1
+decerased visual acuity	1
+Retention, Bladder	1
+ocular pain, both	1
+hiccup	1
+drowsy mentality	1
+altered mental change	1
+oral bleeding	1
+both hand numbness	1
+??? ??? ??	1
+hypoglycemic	1
+Sexual Abuse of Adult	1
+Pain, Abdomen	1
+arrest	1
+eye pain left eye	1
+Free voiding	1
+itching sensation	1
+right lower abdominal pain	1
+rt. side weakness	1
+pelvic pain, Lt	1
+right elbow pain	1
+chest discomfort	1
+Rt. shoulder pain	1
+Hip joint pain	1
+pain, facial	1
+buttock pain	1
+wrist laceration	1
+both shoulder pain	1
+Injury, Leg	1
+COCCYGEAL PAIN	1
+tooth pain, Lt	1
+pain, shoulder	1
+Sensory, Decreased	1
+Rt.arm weakness	1
+high BSL	1
+bee sting	1
+G/W-General weakness	1
+Nasal swelling	1
+Sudden hearing loss	1
+decreased activity	1
+behavior change	1
+abdomen distension	1
+for ascites tapping	1
+sleeping tendency	1
+bleeding, gingival	1
+Whole body, skin rash	1
+Aphasia, Motor	1
+laceration, scalp	1
+tachycardia	1
+skin eruption	1
+Chemical Burn	1
+L side weakness	1
+Suicidal ideation	1
+Difficulty in voiding	1
+CT film copy	1
+PTBD leaukage	1
+BST high	1
+Abnormality, Visual Acuity	1
+urinary Sx.-symptom	1
+for examination	1
+confusion mentality	1
+right side weakness	1
+desaturation	1
+cold	1
+mental confusion	1
+eye trauma	1
+Lt. motor weakness	1
+Fever, Unspecified	1
+Discomfort, Throat	1
+facial lesion	1
+diffuse abdominal discomfort	1
+confused mental status	1
+numbness	1
+itching	1
+left side weakness	1
+C - Coughing	1
+Dental Problem	1
+For  IV injection	1
+nasal injury	1
+Near syncope	1
+Drug Allergy	1
+mood depression	1
+Hyperkalemia (disorder)	1
+depression	1
+Urinary frequency	1
+medication	1
+hallucination	1
+erythematous papule	1
+right nasal bleeding	1
+FB in esophagus	1
+seizure	1
+Delusional Idea	1
+cerebral concussion	1
+hand laceration	1
+perm cath. malfunction	1
+Confusion state	1
+copy	1
+scratch wound	1
+Low abd. pain	1
+Numbness, Arm	1
+blood tinged sputum	1
+Suicidal thoughts (finding)	1
+Voiding Failure	1
+lower extremity paraparesis	1
+Rt. Chest pain	1
+left knee swelling	1
+lower abdominal pain	1
+PTx - Pneumothorax	1
+Rt side numbness	1
+F/C-fever/chills	1
+chest wall pain left	1
+Foreign body sensation in throat	1
+left facial numbness	1
+Dislocation of Jaw	1
+hand tingling sense	1
+?? ??? ??	1
+abdomen discomfort	1
+PPROM	1
+erection, penile	1
+Burn, arm	1
+Gingival bleeding	1
+anal bleeding	1
+swelling, neck	1
+FB in pharynx	1
+Knee Injury	1
+vaginal spotting	1
+right monoparesis	1
+left eyelid laceration	1
+Chest pain NOS (finding)	1
+Midmenstrual pain	1
+Eye Injury	1
+painful skin lesion	1
+Leg pain, NOS	1
+bleeding, knee	1
+Pain, Ankle	1
+pain, neck	1
+arm pain, Rt	1
+generalized urticaria	1
+arm pain	1
+involuntary movt.	1
+chest pain rt	1
+left wrist swelling	1
+leg pain, Lt.	1
+right lower quadrant abdominal pain	1
+needle stick injury	1
+Foreign body sensation in neck	1
+hyperventilation	1
+limb paresthesia	1
+chest wall pain right	1
+chin pain	1
+Gingival swelling	1
+pain, leg	1
+Eczema, Eyelid	1
+arm pain, Lt	1
+V - vomiting	1
+both eye pain	1
+tooth pain	1
+Edema, Cheek	1
+Low Back Pain, Undetermined	1
+pain, back	1
+both wrist pain	1
+testis pain	1
+Elbow Injury	1
+occipital area headache	1
+weakness	1
+low Hb	1
+AVF site bleeding	1
+acute delirium	1
+oliguria	1
+both leg  motor weakness	1
+Drug Intoxication	1
+rt. side neck pain	1
+finger laceration wound	1
+ocular injury, Lt.	1
+Femur Lesion	1
+elbow painful swelling	1
+foot swelling	1
+right shoulder pain	1
+finger lac.	1
+Hand Injury	1
+Eye Foreign Body	1
+leg pain, Rt.	1
+Head Injury	1
+Head pain	1
+wrist pain, Rt	1
+both ocular pain	1
+hip pain Lt.	1
+abdominal pain, periumbilical area	1
+right leg injury	1
+pain, chest wall, Rt	1
+elbow painful swelling lt.	1
+right chest pain	1
+Chin swelling	1
+Pain, ?nus	1
+burn, face	1
+TMJ pain	1
+shoulder pain, both	1
+shoulder pain, Rt	1
+pain, chest wall	1
+lower chest wall pain	1
+pain, tooth	1
+Burn, hand	1
+general ache	1
+visual disturbance	1
+scrotal pain	1
+foreign body ingestion	1
+shoulder pain, Lt	1
+hypertension	1
+pain on Knee	1
+??? ? ???	1
+Low abd discomfort	1
+left side motor weakness	1
+RLQ abdominal pain	1
+both leg cellulitis	1
+left forearm pain	1
+Lower Back Pain	1
+left thigh swelling	1
+wrist pain, Lt	1
+Pain, Eye	1
+VOIDING PAIN	1
+left eye pain	1
+for medication	1
+abd. Distension	1
+Epigastric discomfort(+)	1
+alcohol smell	1
+right forearm burn	1
+both eyelid swelling	1
+abdominal pain, LUQ	1
+discomfort, chest	1
+right forearm laceration	1
+mandibular pain	1
+Toe injury	1
+otalgia, Rt.	1
+Pain, Hand	1
+Toe redness	1
+ear pain lt	1
+toothache	1
+Throat Pain	1
+facial painful swelling	1
+toe pain	1
+left eye swelling	1
+orthopnea	1
