@@ -6,109 +6,121 @@
   <section class="diagnostico-form">
   <div class="diagnostico-content">
      <h2>Formulário de Triagem</h2>
+     <hr>
      <form>
-        <div>
-           <label>Sexo</label>
-           <div id="sex">
-              <div>
-                 <input type="radio" id="male" [(ngModel)]="sex" name="sex" value="0" checked>
-                 <label for="male">Masculino</label>
-              </div>
-              <div>
-                 <input type="radio" id="female" [(ngModel)]="sex" name="sex" value="1">
-                 <label for="female">Feminino</label>
-              </div>
-           </div>
-        </div>
-        <hr>
-        <div>
-           <label>Está ferido?</label>
-           <div id="injured">
-              <div>
-                 <input type="radio" id="injuredYes" [(ngModel)]="injured" name="injured" value="1" checked>
-                 <label for="injuredYes">Sim</label>
-              </div>
-              <div>
-                 <input type="radio" id="injuredNo" [(ngModel)]="injured" name="injured" value="0">
-                 <label for="injuredNo">Não</label>
+        <div class="d-flex flex-row justify-content-around">
+           
+          <div class="d-flex flex-column">
+              <label>Está ferido?</label>
+              <div class="d-flex gap-5">
+                 <div class="d-flex flex-column justify-content-center">
+                    <input type="radio" id="injuredYes" [(ngModel)]="injured" name="injured" value="1" checked>
+                    <label class="d-flex justify-content-center" for="injuredYes">Sim</label>
+                 </div>
+                 <div class="d-flex flex-column justify-content-center" >
+                    <input type="radio" id="injuredNo" [(ngModel)]="injured" name="injured" value="0">
+                    <label class="d-flex justify-content-center" for="injuredNo">Não</label>
+                 </div>
               </div>
            </div>
-        </div>
-        <hr>
-        <div>
-           <label>Possui dores?</label>
-           <div id="pain">
-              <div>
-                 <input type="radio" id="hasPainYes" [(ngModel)]="hasPain" name="hasPain" value="1" (change)="updatePainField(true)">
-                 <label for="hasPainYes">Sim</label>
-              </div>
-              <div>
-                 <input type="radio" id="hasPainNo" [(ngModel)]="hasPain" name="hasPain" value="0" (change)="updatePainField(false)">
-                 <label for="hasPainNo">Não</label>
+
+           <div class="d-flex flex-column">
+            <label class="d-flex justify-content-center">Sexo</label>
+            <div class="d-flex gap-3">
+               <div class="d-flex flex-column justify-content-center">
+                  <input type="radio" id="male" [(ngModel)]="sex" name="sex" value="0" checked>
+                  <label class="d-flex justify-content-center" for="male">Masculino</label>
+               </div>
+               <div class="d-flex flex-column justify-content-center">
+                  <input type="radio" id="female" [(ngModel)]="sex" name="sex" value="1" checked>
+                  <label class="d-flex justify-content-center"for="female">Feminino</label>
+               </div>
+            </div>
+         </div>
+           
+           <div class="d-flex flex-column">
+              <label class="d-flex justify-content-center">Possui dores?</label>
+              <div class="d-flex justify-content-center flex-row gap-3">
+                 <div class="d-flex flex-column justify-content-center">
+                    <input type="radio" id="hasPainYes" [(ngModel)]="hasPain" name="hasPain" value="1" (change)="updatePainField(true)">
+                    <label class="d-flex justify-content-center" for="hasPainYes">Sim</label>
+                 </div>
+                 <div class="d-flex flex-column justify-content-center">
+                    <input type="radio" id="hasPainNo" [(ngModel)]="hasPain" name="hasPain" value="0" (change)="updatePainField(false)">
+                    <label class="d-flex justify-content-center" for="hasPainNo">Não</label>
+                 </div>
               </div>
            </div>
         </div>
         <div *ngIf="showPainField">
+           <hr>
            <label for="painLevel">Nível de Dor (1-10)</label>
            <input type="range" id="painLevel" name="painLevel" [(ngModel)]="painLevel" min="1" max="10">
            <span id="painLevelValue">{{ painLevel }}</span>
         </div>
         <hr>
-        <div>
-           <label for="age">Idade</label>
-           <input type="text" id="age" [(ngModel)]="age" name="age">
+        <div class="d-flex flex-row justify-content-between">
+           <div>
+              <div class="flex-grow-1 ">
+                 <label class="d-flex justify-content-center"for="age">Idade</label>
+                 <input type="text" id="age" [(ngModel)]="age" name="age">
+              </div>
+              <div class="flex-grow-1">
+                 <label class="d-flex justify-content-center"for="heartRate">Frequência Cardíaca</label>
+                 <input type="text" id="heartRate" [(ngModel)]="heartRate" name="heartRate">
+              </div>
+           </div>
+           <img src="../../assets/logo_small.png " style="max-width:30%">
+
+           <div>
+              <div class="flex-grow-1">
+                 <label class="d-flex justify-content-center"for="respiratoryRate">Frequência Respiratória</label>
+                 <input type="text" id="respiratoryRate" [(ngModel)]="respiratoryRate" name="respiratoryRate">
+              </div>
+              <div class="flex-grow-1">
+                 <label class="d-flex justify-content-center"for="saturation">Saturação</label>
+                 <input type="text" id="saturation" [(ngModel)]="saturation" name="saturation">
+              </div>
+           </div>
         </div>
         <hr>
         <div>
-           <label for="heartRate">Frequência Cardíaca</label>
-           <input type="text" id="heartRate" [(ngModel)]="heartRate" name="heartRate">
+           <div class="d-flex flex-row gap-5 justify-content-center">
+              <div class="flex-grow-1">
+                 <label class="d-flex justify-content-center" for="bloodPressure">Pressão Arterial</label>
+                 <select [(ngModel)]="bloodPressure" id="bloodPressure" name="bloodPressure">
+                 <option value="normal">Normal</option>
+                 <option value="elevated">Elevada</option>
+                 <option value="hypertension">Hipertensão</option>
+                 <option value="hypertensiveCrises">Crises Hipertensivas</option>
+                 </select>
+              </div>
+              <div class="flex-grow-1">
+                 <label class="d-flex justify-content-center" for="mentalState">Estado Mental</label>
+                 <select [(ngModel)]="mentalState" id="mentalState" name="mentalState">
+                 <option value="alert">Alerta</option>
+                 <option value="painResponse">Resposta à Dor</option>
+                 <option value="unresponsive">Inconsciente</option>
+                 <option value="verbalResponse">Resposta Verbal</option>
+                 </select>
+              </div>
+              <div class="flex-grow-1">
+                 <label class="d-flex justify-content-center"for="arrivalMode">Modo de Chegada</label>
+                 <select [(ngModel)]="arrivalMode" id="arrivalMode" name="arrivalMode">
+                 <option value="privateAmbulance">Ambulância Privada</option>
+                 <option value="privateVehicle">Veículo Privado</option>
+                 <option value="publicAmbulance">Ambulância Pública</option>
+                 <option value="publicTransport">Transporte Público</option>
+                 <option value="walking">A pé</option>
+                 <option value="wheelchair">Cadeira de Rodas</option>
+                 <option value="other">Outro</option>
+                 </select>
+              </div>
+           </div>
         </div>
         <hr>
-        <div>
-           <label for="respiratoryRate">Frequência Respiratória</label>
-           <input type="text" id="respiratoryRate" [(ngModel)]="respiratoryRate" name="respiratoryRate">
-        </div>
-        <hr>
-        <div>
-           <label for="saturation">Saturação:</label>
-           <input type="text" id="saturation" [(ngModel)]="saturation" name="saturation">
-        </div>
-        <hr>
-        <div>
-           <label for="bloodPressure">Pressão Arterial</label>
-           <select [(ngModel)]="bloodPressure" id="bloodPressure" name="bloodPressure">
-           <option value="normal">Normal</option>
-           <option value="elevated">Elevada</option>
-           <option value="hypertension">Hipertensão</option>
-           <option value="hypertensiveCrises">Crises Hipertensivas</option>
-           </select>
-        </div>
-        <hr>
-        <div>
-           <label for="mentalState">Estado Mental</label>
-           <select [(ngModel)]="mentalState" id="mentalState" name="mentalState">
-           <option value="alert">Alerta</option>
-           <option value="painResponse">Resposta à Dor</option>
-           <option value="unresponsive">Inconsciente</option>
-           <option value="verbalResponse">Resposta Verbal</option>
-           </select>
-        </div>
-        <hr>
-        <div>
-           <label for="arrivalMode">Modo de Chegada</label>
-           <select [(ngModel)]="arrivalMode" id="arrivalMode" name="arrivalMode">
-           <option value="privateAmbulance">Ambulância Privada</option>
-           <option value="privateVehicle">Veículo Privado</option>
-           <option value="publicAmbulance">Ambulância Pública</option>
-           <option value="publicTransport">Transporte Público</option>
-           <option value="walking">A pé</option>
-           <option value="wheelchair">Cadeira de Rodas</option>
-           <option value="other">Outro</option>
-           </select>
-        </div>
-        <hr>
-        <div>
-           <label for="symptoms">Qual dos seguintes sintomas identifica melhor o que está a sentir?</label>
+        <div class="flex-grow-1">
+           <label class="d-flex justify-content-center"for="symptoms">Qual sintoma melhor descreve o que sente?</label>
            <select  [(ngModel)]="symptoms" id="symptoms" name="symptoms">
            <option value="mentalChange">Mudança Mental</option>
            <option value="generalWeakness">Fraqueza Geral</option>
@@ -123,9 +135,16 @@
            <option value="abdominalPain">Dor Abdominal</option>
            </select>
         </div>
-        <hr>
         <div>
            <button type="button" [disabled]="!areAllFieldsFilled()" (click)="onSubmit()">Enviar</button>
+        </div>
+
+        <div id="warning1"class="alert alert-warning" role="alert">
+          This is a warning alert—check it out!
+        </div>
+
+        <div id="warning1"class="alert alert-warning" role="alert">
+          This is a warning alert—check it out!
         </div>
      </form>
   </div>

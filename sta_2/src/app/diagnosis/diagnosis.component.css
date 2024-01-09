@@ -9,8 +9,11 @@
 /* Estilos para o conteúdo principal */
 .diagnostico-container {
   background-color: #f0f0f0;
-  padding: 20px;
+  padding: 0px;
+  width: 35%;
+  margin:auto
 }
+
 
 /* Estilizando o cabeçalho */
 header {
@@ -26,22 +29,23 @@ header h2 {
   font-size: 2rem;
   color: #fff;
   margin: 0;
-  text-align: left;
+  text-align: center;
 }
 
 /* Estilos para o formulário de triagem */
 .diagnostico-form {
   background-color: #ffffff;
   padding: 20px;
-  border-radius: 8px;
+  border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
-  max-height: 80vh;
-  overflow-y: auto;
+  max-height: 100vh;
+  
 }
 
 .diagnostico-form h2 {
-  margin-bottom: 20px;
+  text-align: center;
+  margin-bottom: 20px; /* Adicionando um espaçamento maior abaixo do h2 */
 }
 
 .diagnostico-form hr {
@@ -97,8 +101,6 @@ header h2 {
   background-color: #0056b3;
 }
 
-#sex, #injured, #pain {
-  display : flex;
-  flex-direction : row;
-  gap : 1%
+#warning1{
+  margin-top: 20px; /* Adicionando um espaçamento maior abaixo do h2 */
 }
