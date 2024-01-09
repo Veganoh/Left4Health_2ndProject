@@ -1,13 +1,15 @@
-/* Estilos para o layout geral */
-.diagnostico-container {
-  font-family: Arial, sans-serif;
-  background-color: #f5f5f5;
-  padding: 20px;
-  min-height: 100vh;
+/* Usando Arial como fonte para todos os elementos */
+body,
+button,
+input,
+select,
+textarea,
+* {
+  font-family: 'Arial', sans-serif;
 }
 
-header {
-  width: 100%;
+/* Estilos para o cabeçalho */
+.bg-gradient {
   background: linear-gradient(to right, #ff6f61, #77dd77, #4285f4);
   padding: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -16,85 +18,144 @@ header {
   align-items: center;
 }
 
-header h2 {
+.bg-gradient h2 {
   font-size: 2rem;
   color: #fff;
   margin: 0;
 }
 
-main {
-  width: 100%;
-  padding: 0 20px; /* Adicionando um espaçamento lateral */
-  box-sizing: border-box; /* Garantindo que o padding não incremente a largura */
-}
-
-/* Estilos para os elementos do formulário */
+/* Estilos para a seção principal */
 .suggestion-component {
   background-color: #ffffff;
-  padding: 30px;
+  padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
 }
 
-.local-component,
-.transport-method,
-.bracelet-color,
-.preference {
-  margin-bottom: 20px;
-}
-
-label {
-  display: block;
-  margin-bottom: 5px;
+/* Estilização para os elementos internos */
+.suggestion-component .form-label {
   font-weight: bold;
 }
 
-input[type="text"],
-select,
-button {
+.suggestion-component .form-control,
+.suggestion-component .form-select {
   width: 100%;
   padding: 8px;
   border-radius: 5px;
   border: 1px solid #ccc;
-  box-sizing: border-box; /* Garantindo que o padding não incremente a largura */
+  box-sizing: border-box;
+  margin-bottom: 10px;
 }
 
-/* Estilos para a seção de preferências */
-.preference {
-  margin-bottom: 20px;
+.suggestion-component .form-check-input {
+  margin-right: 5px;
+}
+
+.suggestion-component .form-check-label {
+  font-weight: normal;
+}
+
+.suggestion-component .best-alternatives h2 {
+  margin-top: 0;
+}
+
+.suggestion-component .navigation-buttons {
   display: flex;
-}
-
-.preference input[type="radio"],
-.preference label {
-  margin-right: 10px;
-  vertical-align: middle;
-  font-weight: normal; /* Removendo o negrito dos botões de rádio */
-}
-
-.error-message {
-  color: #ff0000;
+  justify-content: center;
   margin-top: 10px;
 }
 
-.best-alternatives {
-  margin-top: 20px;
+.suggestion-component .navigation-buttons button {
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.hospital-info {
-  border-bottom: 1px solid #ccc;
-  padding-bottom: 15px;
-  margin-bottom: 15px;
+.suggestion-component .navigation-buttons button:hover {
+  background-color: #3367d6;
+  color: #fff;
 }
 
-/* Media Query para telas menores */
-@media (max-width: 600px) {
-  .local-component,
-  .transport-method,
-  .bracelet-color,
-  .preference {
-    margin-bottom: 15px;
-  }
+/* Estilos para botões específicos */
+.suggestion-component .navigation-buttons button.previous,
+.suggestion-component .navigation-buttons button.next {
+  background-color: #4285f4;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
 }
 
+.suggestion-component .navigation-buttons button.previous::before,
+.suggestion-component .navigation-buttons button.next::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+}
+
+.suggestion-component .navigation-buttons button.previous::before {
+  left: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-right: 10px solid #3367d6;
+}
+
+.suggestion-component .navigation-buttons button.next::after {
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-left: 10px solid #3367d6;
+}
+
+/* Estilização do botão "Obter as melhores alternativas" */
+.submit-button {
+  display: flex;
+  justify-content: center;
+}
+
+.submit-button button {
+  padding: 12px 24px;
+  font-size: 1.2rem;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button button:hover {
+  background-color: #0056b3;
+}
+
+.return-home-button {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.return-home-button button {
+  padding: 10px 20px; 
+  font-size: 1rem;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+}
+
+.return-home-button button:hover {
+  background-color: #0056b3;
+}
+
+/* Ajuste no espaçamento entre os botões "Anterior" e "Próximo" */
+.suggestion-component .navigation-buttons button {
+  padding: 10px 20px;
+  margin: 0 5px; /* Adicionando margem entre os botões */
+}

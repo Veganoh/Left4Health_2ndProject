@@ -1,3 +1,12 @@
+<div class="diagnostico-container">
+  <header>
+    <h2>LEFT 4 HEALTH</h2>
+  </header>
+  <main class="main">
+    <section class="diagnostico-form">
+      <div class="diagnostico-content">
+        <h2 style="margin-bottom: 20px;">Formulário de Triagem</h2>
+        <hr style="margin-bottom: 20px;">
 <form>
       <div>
         <label>Sexo:</label>
@@ -10,7 +19,7 @@
           <label for="female">Feminino</label>
         </div>
       </div>
-    
+      <hr> 
       <div>
         <label>Está ferido?</label>
         <div>
@@ -22,7 +31,7 @@
           <label for="injuredNo">Não</label>
         </div>
       </div>
-    
+      <hr> 
       <div>
         <label>Possui dores?</label>
         <div>
@@ -41,27 +50,27 @@
         <input type="range" id="painLevel" name="painLevel" [(ngModel)]="painLevel" min="1" max="10">
         <span id="painLevelValue">{{ painLevel }}</span>
       </div>
-
+      <hr> 
       <div>
         <label for="age">Idade:</label>
         <input type="text" id="age" [(ngModel)]="age" name="age">
       </div>
-
+      <hr> 
       <div>
         <label for="heartRate">Frequência Cardíaca:</label>
         <input type="text" id="heartRate" [(ngModel)]="heartRate" name="heartRate">
       </div>
-    
+      <hr> 
       <div>
         <label for="respiratoryRate">Frequência Respiratória:</label>
         <input type="text" id="respiratoryRate" [(ngModel)]="respiratoryRate" name="respiratoryRate">
       </div>
-
+      <hr> 
       <div>
         <label for="saturation">Saturação:</label>
         <input type="text" id="saturation" [(ngModel)]="saturation" name="saturation">
       </div>
-
+      <hr> 
       <div>
         <label for="bloodPressure">Pressão Arterial:</label>
         <select [(ngModel)]="bloodPressure" id="bloodPressure" name="bloodPressure">
@@ -71,7 +80,7 @@
           <option value="hypertensiveCrises">Crises Hipertensivas</option>
         </select>
       </div>
-
+      <hr> 
       <div>
         <label for="mentalState">Estado Mental:</label>
         <select [(ngModel)]="mentalState" id="mentalState" name="mentalState">
@@ -81,7 +90,7 @@
           <option value="verbalResponse">Resposta Verbal</option>
         </select>
       </div>
-
+      <hr> 
       <div>
         <label for="arrivalMode">Modo de Chegada:</label>
         <select [(ngModel)]="arrivalMode" id="arrivalMode" name="arrivalMode">
@@ -94,7 +103,7 @@
           <option value="other">Outro</option>
         </select>
       </div>
-
+      <hr> 
       <div>
         <label for="symptoms">Qual dos seguintes sintomas identifica melhor o que está a sentir?:</label>
         <select  [(ngModel)]="symptoms" id="symptoms" name="symptoms">
@@ -111,7 +120,7 @@
           <option value="abdominalPain">Dor Abdominal</option>
         </select>
       </div>
-      
+      <hr>
       <div>
         <button type="button" [disabled]="!areAllFieldsFilled()" (click)="onSubmit()">Enviar</button>
       </div>

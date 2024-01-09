@@ -1,18 +1,18 @@
 <!-- suggestions.component.html -->
-<div class="diagnostico-container">
-  <header>
-    <h2>LEFT 4 HEALTH</h2>
+<div class="container diagnostico-container">
+  <header class="bg-gradient p-4 shadow d-flex justify-content-center align-items-center">
+    <h2 class="text-white">LEFT 4 HEALTH</h2>
   </header>
-  <div class="suggestion-component">
 
-    <div class="local-component">
-      <label for="local-input">Localização:</label>
-      <input type="text" id="local-input" [(ngModel)]="local" name="local" placeholder="Digite o local...">
+  <div class="suggestion-component bg-white p-4 rounded shadow-sm mb-4">
+    <div class="local-component mb-3">
+      <label for="local-input" class="form-label fw-bold">Localização:</label>
+      <input type="text" id="local-input" [(ngModel)]="local" name="local" class="form-control" placeholder="Digite o local...">
     </div>
 
-    <div class="transport-method">
-      <label for="transport-dropdown">Método de Transporte:</label>
-      <select id="transport-dropdown" [(ngModel)]="transport" name="transport">
+    <div class="transport-method mb-3">
+      <label for="transport-dropdown" class="form-label fw-bold">Método de Transporte:</label>
+      <select id="transport-dropdown" [(ngModel)]="transport" name="transport" class="form-select">
         <option value="driving">Carro</option>
         <option value="walking">A pé</option>
         <option value="bicycling">Bicicleta</option>
@@ -20,9 +20,9 @@
       </select>
     </div>
 
-    <div class="bracelet-color">
-      <label for="bracelet-dropdown">Cor da Pulseira:</label>
-      <select id="bracelet-dropdown" [(ngModel)]="braceletColor" name="braceletColor">
+    <div class="bracelet-color mb-3">
+      <label for="bracelet-dropdown" class="form-label fw-bold">Cor da Pulseira:</label>
+      <select id="bracelet-dropdown" [(ngModel)]="braceletColor" name="braceletColor" class="form-select">
         <option value="Red">Vermelho</option>
         <option value="Orange">Laranja</option>
         <option value="Yellow">Amarelo</option>
@@ -32,18 +32,25 @@
     </div>
 
     <div class="preference">
-      <label for="preference-radio">Preferência:</label>
-      <input type="radio" id="nearest-hospital" [(ngModel)]="preference" name="preference" value="nearest-hospital">
-      <label for="nearest-hospital">Hospital Mais Próximo</label>
-
-      <input type="radio" id="shortest-wait-time" [(ngModel)]="preference" name="preference" value="shortest-wait-time">
-      <label for="shortest-wait-time">Tempo de Espera Mais Curto</label>
-
-      <input type="radio" id="no-preference" [(ngModel)]="preference" name="preference" value="no-preference">
-      <label for="no-preference">Nenhuma Preferência</label>
+      <label for="preference-radio" class="form-label fw-bold">Preferência:</label>
+    
+      <div class="form-check">
+        <input type="radio" id="nearest-hospital" [(ngModel)]="preference" name="preference" value="nearest-hospital" class="form-check-input">
+        <label for="nearest-hospital" class="form-check-label">Hospital Mais Próximo</label>
+      </div>
+    
+      <div class="form-check">
+        <input type="radio" id="shortest-wait-time" [(ngModel)]="preference" name="preference" value="shortest-wait-time" class="form-check-input">
+        <label for="shortest-wait-time" class="form-check-label">Tempo de Espera Mais Curto</label>
+      </div>
+    
+      <div class="form-check">
+        <input type="radio" id="no-preference" [(ngModel)]="preference" name="preference" value="no-preference" class="form-check-input">
+        <label for="no-preference" class="form-check-label">Nenhuma Preferência</label>
+      </div>
     </div>
 
-    <div *ngIf="bestAlternatives && bestAlternatives.length > 0" class="best-alternatives">
+    <div *ngIf="bestAlternatives && bestAlternatives.length > 0" class="best-alternatives mb-3">
       <h2>Melhores Alternativas:</h2>
       <div *ngIf="currentHospitalIndex >= 0 && currentHospitalIndex < bestAlternatives.length">
         <div class="hospital-info">
@@ -58,14 +65,18 @@
         </div>
 
         <div class="navigation-buttons">
-          <button (click)="showPreviousHospital()" [disabled]="currentHospitalIndex === 0">Anterior</button>
-          <button (click)="showNextHospital()" [disabled]="currentHospitalIndex === bestAlternatives.length - 1">Próximo</button>
-        </div>
+          <button (click)="showPreviousHospital()" [disabled]="currentHospitalIndex === 0" class="previous">Anterior</button>
+          <button (click)="showNextHospital()" [disabled]="currentHospitalIndex === bestAlternatives.length - 1" class="next">Próximo</button>
+        </div>        
       </div>
     </div>
 
-    <div class="submit-button">
-      <button (click)="handleSuggestion()">Obter as melhores alternativas</button>
+    <div class="submit-button mb-3" *ngIf="showGetResultsButton">
+      <button (click)="handleSuggestion()" class="btn btn-primary">Obter as melhores alternativas</button>
+    </div>
+    
+    <div class="return-home-button mb-3" *ngIf="!showGetResultsButton">
+      <button (click)="handleReturnHome()" class="btn btn-secondary"> Pagina Inicial</button>
     </div>
   </div>
 </div>

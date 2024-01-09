@@ -1,27 +1,23 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http'; // Importe o HttpClientModule
+import { HttpClientModule } from '@angular/common/http';
 import { GoogleMapsModule } from '@angular/google-maps';
-
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SuggestionsComponent } from './suggestions/suggestions.component';
 import { HomeComponent } from './home/home.component';
-import { DiagnosticoComponent } from './diagnostico/diagnostico.component';
-import { FormsModule } from '@angular/forms';
 import { GoogleMapsComponent } from './google-maps/google-maps.component';
-import { DiagnosisComponent } from './diagnosis/diagnosis.component';
-
+import { DiagnosisComponent } from './diagnosis/diagnosis.component'; // Renomeado para DiagnosisComponent
 
 @NgModule({
   declarations: [
     AppComponent,
     SuggestionsComponent,
     HomeComponent,
-    DiagnosticoComponent,
     GoogleMapsComponent,
-    DiagnosisComponent
+    DiagnosisComponent // Adicionado o DiagnosisComponent
   ],
   imports: [
     BrowserModule,
@@ -34,4 +30,3 @@ import { DiagnosisComponent } from './diagnosis/diagnosis.component';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-export class DiagnosticoModule { }
