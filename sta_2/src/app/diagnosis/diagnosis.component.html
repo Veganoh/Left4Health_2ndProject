@@ -1,128 +1,131 @@
 <div class="diagnostico-container">
   <header>
-    <h2>LEFT 4 HEALTH</h2>
+     <h2>LEFT 4 HEALTH</h2>
   </header>
   <main class="main">
-    <section class="diagnostico-form">
-      <div class="diagnostico-content">
-        <h2 style="margin-bottom: 20px;">Formulário de Triagem</h2>
-        <hr style="margin-bottom: 20px;">
-<form>
-      <div>
-        <label>Sexo:</label>
+  <section class="diagnostico-form">
+  <div class="diagnostico-content">
+     <h2>Formulário de Triagem</h2>
+     <form>
         <div>
-          <input type="radio" id="male" [(ngModel)]="sex" name="sex" value="0" checked>
-          <label for="male">Masculino</label>
+           <label>Sexo</label>
+           <div id="sex">
+              <div>
+                 <input type="radio" id="male" [(ngModel)]="sex" name="sex" value="0" checked>
+                 <label for="male">Masculino</label>
+              </div>
+              <div>
+                 <input type="radio" id="female" [(ngModel)]="sex" name="sex" value="1">
+                 <label for="female">Feminino</label>
+              </div>
+           </div>
         </div>
+        <hr>
         <div>
-          <input type="radio" id="female" [(ngModel)]="sex" name="sex" value="1">
-          <label for="female">Feminino</label>
+           <label>Está ferido?</label>
+           <div id="injured">
+              <div>
+                 <input type="radio" id="injuredYes" [(ngModel)]="injured" name="injured" value="1" checked>
+                 <label for="injuredYes">Sim</label>
+              </div>
+              <div>
+                 <input type="radio" id="injuredNo" [(ngModel)]="injured" name="injured" value="0">
+                 <label for="injuredNo">Não</label>
+              </div>
+           </div>
         </div>
-      </div>
-      <hr> 
-      <div>
-        <label>Está ferido?</label>
+        <hr>
         <div>
-          <input type="radio" id="injuredYes" [(ngModel)]="injured" name="injured" value="1" checked>
-          <label for="injuredYes">Sim</label>
+           <label>Possui dores?</label>
+           <div id="pain">
+              <div>
+                 <input type="radio" id="hasPainYes" [(ngModel)]="hasPain" name="hasPain" value="1" (change)="updatePainField(true)">
+                 <label for="hasPainYes">Sim</label>
+              </div>
+              <div>
+                 <input type="radio" id="hasPainNo" [(ngModel)]="hasPain" name="hasPain" value="0" (change)="updatePainField(false)">
+                 <label for="hasPainNo">Não</label>
+              </div>
+           </div>
         </div>
+        <div *ngIf="showPainField">
+           <label for="painLevel">Nível de Dor (1-10)</label>
+           <input type="range" id="painLevel" name="painLevel" [(ngModel)]="painLevel" min="1" max="10">
+           <span id="painLevelValue">{{ painLevel }}</span>
+        </div>
+        <hr>
         <div>
-          <input type="radio" id="injuredNo" [(ngModel)]="injured" name="injured" value="0">
-          <label for="injuredNo">Não</label>
+           <label for="age">Idade</label>
+           <input type="text" id="age" [(ngModel)]="age" name="age">
         </div>
-      </div>
-      <hr> 
-      <div>
-        <label>Possui dores?</label>
+        <hr>
         <div>
-          <input type="radio" id="hasPainYes" [(ngModel)]="hasPain" name="hasPain" value="1" (change)="updatePainField(true)">
-          <label for="hasPainYes">Sim</label>
+           <label for="heartRate">Frequência Cardíaca</label>
+           <input type="text" id="heartRate" [(ngModel)]="heartRate" name="heartRate">
         </div>
+        <hr>
         <div>
-          <input type="radio" id="hasPainNo" [(ngModel)]="hasPain" name="hasPain" value="0" (change)="updatePainField(false)">
-          <label for="hasPainNo">Não</label>
+           <label for="respiratoryRate">Frequência Respiratória</label>
+           <input type="text" id="respiratoryRate" [(ngModel)]="respiratoryRate" name="respiratoryRate">
         </div>
-      </div>
-
-    
-      <div *ngIf="showPainField">
-        <label for="painLevel">Nível de Dor (1-10):</label>
-        <input type="range" id="painLevel" name="painLevel" [(ngModel)]="painLevel" min="1" max="10">
-        <span id="painLevelValue">{{ painLevel }}</span>
-      </div>
-      <hr> 
-      <div>
-        <label for="age">Idade:</label>
-        <input type="text" id="age" [(ngModel)]="age" name="age">
-      </div>
-      <hr> 
-      <div>
-        <label for="heartRate">Frequência Cardíaca:</label>
-        <input type="text" id="heartRate" [(ngModel)]="heartRate" name="heartRate">
-      </div>
-      <hr> 
-      <div>
-        <label for="respiratoryRate">Frequência Respiratória:</label>
-        <input type="text" id="respiratoryRate" [(ngModel)]="respiratoryRate" name="respiratoryRate">
-      </div>
-      <hr> 
-      <div>
-        <label for="saturation">Saturação:</label>
-        <input type="text" id="saturation" [(ngModel)]="saturation" name="saturation">
-      </div>
-      <hr> 
-      <div>
-        <label for="bloodPressure">Pressão Arterial:</label>
-        <select [(ngModel)]="bloodPressure" id="bloodPressure" name="bloodPressure">
-          <option value="normal">Normal</option>
-          <option value="elevated">Elevada</option>
-          <option value="hypertension">Hipertensão</option>
-          <option value="hypertensiveCrises">Crises Hipertensivas</option>
-        </select>
-      </div>
-      <hr> 
-      <div>
-        <label for="mentalState">Estado Mental:</label>
-        <select [(ngModel)]="mentalState" id="mentalState" name="mentalState">
-          <option value="alert">Alerta</option>
-          <option value="painResponse">Resposta à Dor</option>
-          <option value="unresponsive">Inconsciente</option>
-          <option value="verbalResponse">Resposta Verbal</option>
-        </select>
-      </div>
-      <hr> 
-      <div>
-        <label for="arrivalMode">Modo de Chegada:</label>
-        <select [(ngModel)]="arrivalMode" id="arrivalMode" name="arrivalMode">
-          <option value="privateAmbulance">Ambulância Privada</option>
-          <option value="privateVehicle">Veículo Privado</option>
-          <option value="publicAmbulance">Ambulância Pública</option>
-          <option value="publicTransport">Transporte Público</option>
-          <option value="walking">A pé</option>
-          <option value="wheelchair">Cadeira de Rodas</option>
-          <option value="other">Outro</option>
-        </select>
-      </div>
-      <hr> 
-      <div>
-        <label for="symptoms">Qual dos seguintes sintomas identifica melhor o que está a sentir?:</label>
-        <select  [(ngModel)]="symptoms" id="symptoms" name="symptoms">
-          <option value="mentalChange">Mudança Mental</option>
-          <option value="generalWeakness">Fraqueza Geral</option>
-          <option value="vomiting">Vômitos</option>
-          <option value="chestPain">Dor no Peito</option>
-          <option value="epigastricPain">Dor Epigástrica</option>
-          <option value="dyspnea">Dificuldade Respiratória</option>
-          <option value="dizziness">Tontura</option>
-          <option value="fever">Febre</option>
-          <option value="openWound">Ferida Aberta</option>
-          <option value="headache">Dor de Cabeça</option>
-          <option value="abdominalPain">Dor Abdominal</option>
-        </select>
-      </div>
-      <hr>
-      <div>
-        <button type="button" [disabled]="!areAllFieldsFilled()" (click)="onSubmit()">Enviar</button>
-      </div>
-</form>
-  
+        <hr>
+        <div>
+           <label for="saturation">Saturação:</label>
+           <input type="text" id="saturation" [(ngModel)]="saturation" name="saturation">
+        </div>
+        <hr>
+        <div>
+           <label for="bloodPressure">Pressão Arterial</label>
+           <select [(ngModel)]="bloodPressure" id="bloodPressure" name="bloodPressure">
+           <option value="normal">Normal</option>
+           <option value="elevated">Elevada</option>
+           <option value="hypertension">Hipertensão</option>
+           <option value="hypertensiveCrises">Crises Hipertensivas</option>
+           </select>
+        </div>
+        <hr>
+        <div>
+           <label for="mentalState">Estado Mental</label>
+           <select [(ngModel)]="mentalState" id="mentalState" name="mentalState">
+           <option value="alert">Alerta</option>
+           <option value="painResponse">Resposta à Dor</option>
+           <option value="unresponsive">Inconsciente</option>
+           <option value="verbalResponse">Resposta Verbal</option>
+           </select>
+        </div>
+        <hr>
+        <div>
+           <label for="arrivalMode">Modo de Chegada</label>
+           <select [(ngModel)]="arrivalMode" id="arrivalMode" name="arrivalMode">
+           <option value="privateAmbulance">Ambulância Privada</option>
+           <option value="privateVehicle">Veículo Privado</option>
+           <option value="publicAmbulance">Ambulância Pública</option>
+           <option value="publicTransport">Transporte Público</option>
+           <option value="walking">A pé</option>
+           <option value="wheelchair">Cadeira de Rodas</option>
+           <option value="other">Outro</option>
+           </select>
+        </div>
+        <hr>
+        <div>
+           <label for="symptoms">Qual dos seguintes sintomas identifica melhor o que está a sentir?</label>
+           <select  [(ngModel)]="symptoms" id="symptoms" name="symptoms">
+           <option value="mentalChange">Mudança Mental</option>
+           <option value="generalWeakness">Fraqueza Geral</option>
+           <option value="vomiting">Vômitos</option>
+           <option value="chestPain">Dor no Peito</option>
+           <option value="epigastricPain">Dor Epigástrica</option>
+           <option value="dyspnea">Dificuldade Respiratória</option>
+           <option value="dizziness">Tontura</option>
+           <option value="fever">Febre</option>
+           <option value="openWound">Ferida Aberta</option>
+           <option value="headache">Dor de Cabeça</option>
+           <option value="abdominalPain">Dor Abdominal</option>
+           </select>
+        </div>
+        <hr>
+        <div>
+           <button type="button" [disabled]="!areAllFieldsFilled()" (click)="onSubmit()">Enviar</button>
+        </div>
+     </form>
+  </div>

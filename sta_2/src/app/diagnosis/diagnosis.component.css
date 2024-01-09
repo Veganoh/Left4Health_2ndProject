@@ -7,70 +7,13 @@
 }
 
 /* Estilos para o conteúdo principal */
-.diagnosis-component {
-  background-color: #ffffff;
+.diagnostico-container {
+  background-color: #f0f0f0;
   padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
-  max-height: 80vh;
-  overflow-y: auto;
 }
 
-/* Estilizando as perguntas */
-.diagnosis-component label {
-  font-weight: bold;
-  margin-bottom: 10px;
-  color: #333;
-  display: block;
-}
-
-.diagnosis-component input[type="text"],
-.diagnosis-component input[type="range"],
-.diagnosis-component select {
-  width: calc(100% - 18px);
-  padding: 8px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  margin-bottom: 10px;
-}
-
-.diagnosis-component input[type="radio"] + label,
-.diagnosis-component input[type="checkbox"] + label {
-  font-weight: normal;
-  color: #555;
-  cursor: pointer;
-}
-
-.diagnosis-component input[type="radio"]:checked + label,
-.diagnosis-component input[type="checkbox"]:checked + label {
-  font-weight: bold;
-  color: #007bff;
-}
-
-/* Estilos para os botões */
-button {
-  margin-top: 30px;
-  padding: 10px 20px; /* Reduzindo o padding do botão */
-  font-size: 1.2rem;
-  color: #fff;
-  background-color: #007bff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-button:hover {
-  background-color: #0056b3;
-}
-
-/* Estilos para o cabeçalho */
+/* Estilizando o cabeçalho */
 header {
-  position: relative;
-  width: 100%;
   background: linear-gradient(to right, #ff6f61, #77dd77, #4285f4);
   padding: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -83,22 +26,79 @@ header h2 {
   font-size: 2rem;
   color: #fff;
   margin: 0;
-  padding: 0;
   text-align: left;
 }
 
-/* Adicionando linhas separadoras entre as questões */
-.diagnosis-component > div {
+/* Estilos para o formulário de triagem */
+.diagnostico-form {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid #ccc;
-}
-.diagnosis-component > div:last-child {
-  border-bottom: none;
+  max-height: 80vh;
+  overflow-y: auto;
 }
 
-hr {
-  border: none; /* Remove a borda padrão */
-  border-top: 1px solid #ccc; /* Adiciona uma linha de 1px de largura e cor cinza */
-  margin: 20px 0; /* Define margem superior e inferior para a linha */
+.diagnostico-form h2 {
+  margin-bottom: 20px;
+}
+
+.diagnostico-form hr {
+  margin-bottom: 20px;
+}
+
+.diagnostico-form label {
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333;
+  display: block;
+}
+
+.diagnostico-form input[type="text"],
+.diagnostico-form input[type="range"],
+.diagnostico-form select {
+  width: calc(100% - 18px);
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+}
+
+.diagnostico-form input[type="radio"] + label,
+.diagnostico-form input[type="checkbox"] + label {
+  font-weight: normal;
+  color: #555;
+  cursor: pointer;
+}
+
+.diagnostico-form input[type="radio"]:checked + label,
+.diagnostico-form input[type="checkbox"]:checked + label {
+  font-weight: bold;
+  color: #007bff;
+}
+
+/* Estilos para os botões no formulário de triagem */
+.diagnostico-form button {
+  margin-top: 30px;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.diagnostico-form button:hover {
+  background-color: #0056b3;
+}
+
+#sex, #injured, #pain {
+  display : flex;
+  flex-direction : row;
+  gap : 1%
 }
