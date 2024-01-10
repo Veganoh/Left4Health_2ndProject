@@ -29,6 +29,8 @@ export class DiagnosisComponent implements OnInit {
   arrivalMode: string = '';
   symptoms: string = '';
   temperature: string = '';
+  errorMessage: string = '';
+
 
   triage: number = 0;
 
@@ -64,6 +66,11 @@ export class DiagnosisComponent implements OnInit {
       temperature: this.temperature,
     };
 
+    if (!this.areAllFieldsFilled()) {
+      this.errorMessage = 'Por favor, preencha todos os campos antes de obter sugestões.';
+      return;
+    }
+
     this.diagnosisService.obtain_triage(formData).subscribe(
       (response) => {
         this.triage = response.triage;
@@ -73,7 +80,6 @@ export class DiagnosisComponent implements OnInit {
       }
     );
 
-    this.triage = 1;
     this.isModalShown.next(true);
 
     console.log(formData);
