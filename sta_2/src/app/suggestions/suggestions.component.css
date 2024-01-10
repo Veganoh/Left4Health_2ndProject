@@ -8,22 +8,6 @@ textarea,
   font-family: 'Arial', sans-serif;
 }
 
-/* Estilos para o cabeçalho */
-.bg-gradient {
-  background: linear-gradient(to right, #ff6f61, #77dd77, #4285f4);
-  padding: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.bg-gradient h2 {
-  font-size: 2rem;
-  color: #fff;
-  margin: 0;
-}
-
 /* Estilos para a seção principal */
 .suggestion-component {
   background-color: #ffffff;
@@ -36,6 +20,21 @@ textarea,
 /* Estilização para os elementos internos */
 .suggestion-component .form-label {
   font-weight: bold;
+}
+
+/* Estilos para o cabeçalho */
+header {
+  background: linear-gradient(to right, #ff6f61, #77dd77, #4285f4);
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(224, 222, 222, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+ h2 {
+  font-size: 2rem;
+  color: #fff;
+  margin: 0;
 }
 
 .suggestion-component .form-control,
@@ -159,3 +158,5 @@ textarea,
   padding: 10px 20px;
   margin: 0 5px; /* Adicionando margem entre os botões */
 }
+
+
