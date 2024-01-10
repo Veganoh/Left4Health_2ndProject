@@ -53,7 +53,6 @@ export class DiagnosisComponent implements OnInit {
       age: this.age,
       injured: this.injured.toString(),
       pain: this.hasPain.toString(),
-      painLevel : this.painLevel.toString(),
       nrs_pain: this.hasPain ? this.painLevel.toString() : '0',
       heart_rate: this.heartRate,
       respiratory_rate: this.respiratoryRate,
