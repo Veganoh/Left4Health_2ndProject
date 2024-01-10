@@ -1,11 +1,11 @@
 <div class="diagnostico-container">
   <header>
-     <h2>LEFT 4 HEALTH</h2>
+     <h2>Left 4 Health</h2>
   </header>
   <main class="main">
   <section class="diagnostico-form">
   <div class="diagnostico-content">
-     <h2>Formulário de Triagem</h2>
+     <h2>Triagem</h2>
      <hr>
      <form>
         <div class="d-flex flex-row justify-content-around">
@@ -70,7 +70,7 @@
                  <input type="text" id="heartRate" [(ngModel)]="heartRate" name="heartRate">
               </div>
            </div>
-           <img src="../../assets/logo_small.png " style="max-width:30%">
+           <img src="../../assets/logo_small.png " style="max-width:25%">
 
            <div>
               <div class="flex-grow-1">
@@ -136,10 +136,10 @@
            </select>
         </div>
         <div>
-           <button type="button" [disabled]="!areAllFieldsFilled()" (click)="onSubmit()" data-toggle="modal" data-target="#myModal">Enviar</button>
+           <button type="button"  (click)="onSubmit()" data-toggle="modal" data-target="#myModal">Enviar</button>
         </div>
 
-      
+      <!-- [disabled]="!areAllFieldsFilled() -->
         <div id="warning1"class="alert alert-warning" role="alert">
          Esta é uma previsão e não é 100% fiável. Utilize com discernimento.
          </div>
