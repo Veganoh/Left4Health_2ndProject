@@ -15,6 +15,7 @@ export class DiagnosisComponent implements OnInit {
 
   showPainField: boolean = false;
 
+  model: string = '1'
   sex: string = '';
   injured: string = '';
   hasPain: string = '';
@@ -40,11 +41,13 @@ export class DiagnosisComponent implements OnInit {
     this.showPainField = hasPain;
   }
 
+
   onSubmit(): void {
 
     if (this.hasPain === "0") this.painLevel = "0";
     
     const formData = {
+      model: this.model,
       sex: this.sex.toString(),
       age: this.age,
       injured: this.injured.toString(),
@@ -90,5 +93,13 @@ export class DiagnosisComponent implements OnInit {
       this.arrivalMode.trim() !== '';
   
     return basicFieldsFilled;
+  }
+
+  changeModel(): void {
+    if (this.model === '1') {
+      this.model = '2';
+    } else if (this.model === '2'){
+      this.model = '3';
+    } else this.model = '1';
   }
 }

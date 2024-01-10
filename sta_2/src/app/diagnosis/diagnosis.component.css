@@ -5,6 +5,13 @@
   box-sizing: border-box;
   font-family: Arial, sans-serif;
 }
+.container-moree {
+  height: 100%;
+  background-image: url("../../assets/61804.jpg"); /* Ajuste o caminho e a extensão conforme necessário */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 
 /* Estilos para o conteúdo principal */
 .diagnostico-container {
@@ -19,9 +26,10 @@
 /* Estilizando o cabeçalho */
 header {
   background: linear-gradient(to right, #ff6f61, #77dd77, #4285f4);
-  padding: 20px;
+  padding: 22px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   display: flex;
+  text-align: center;
   justify-content: center;
   align-items: center;
 }
@@ -32,6 +40,14 @@ header h2 {
   margin: 0;
   text-align: center;
 }
+
+
+header h3 {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #fff;
+}
+
 
 /* Estilos para o formulário de triagem */
 .diagnostico-form {
@@ -104,4 +120,12 @@ header h2 {
 
 #warning1{
   margin-top: 20px; /* Adicionando um espaçamento maior abaixo do h2 */
+}
+
+#secret {
+  border: none;
+  padding: 0;
+  background: none;
+  cursor: pointer;
+  width: 25%; 
 }
