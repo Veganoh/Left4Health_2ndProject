@@ -28,6 +28,7 @@ export class DiagnosisComponent implements OnInit {
   mentalState: string = '';
   arrivalMode: string = '';
   symptoms: string = '';
+  temperature: string = '';
 
   triage: number = 0;
 
@@ -60,7 +61,8 @@ export class DiagnosisComponent implements OnInit {
       saturation: this.saturation,
       mental_state: this.mentalState,
       arrival_mode: this.arrivalMode,
-      symptom: this.symptoms
+      symptom: this.symptoms,
+      temperature: this.temperature,
     };
 
     this.diagnosisService.obtain_triage(formData).subscribe(
@@ -90,7 +92,9 @@ export class DiagnosisComponent implements OnInit {
       this.hasPain.trim() !== '' &&
       this.bloodPressure.trim() !== '' &&
       this.mentalState.trim() !== '' &&
-      this.arrivalMode.trim() !== '';
+      this.arrivalMode.trim() !== '' &&
+      this.temperature.trim() !== '';
+
   
     return basicFieldsFilled;
   }

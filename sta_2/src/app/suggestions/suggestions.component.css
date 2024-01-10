@@ -26,7 +26,6 @@ textarea,
 header {
   background: linear-gradient(to right, #ff6f61, #77dd77, #4285f4);
   padding: 20px;
-  box-shadow: 0 2px 4px rgba(224, 222, 222, 0.1);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -59,57 +58,6 @@ header {
   margin-top: 0;
 }
 
-.suggestion-component .navigation-buttons {
-  display: flex;
-  justify-content: center;
-  margin-top: 10px;
-}
-
-.suggestion-component .navigation-buttons button {
-  padding: 10px 20px;
-  border-radius: 5px;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.suggestion-component .navigation-buttons button:hover {
-  background-color: #3367d6;
-  color: #fff;
-}
-
-/* Estilos para botões específicos */
-.suggestion-component .navigation-buttons button.previous,
-.suggestion-component .navigation-buttons button.next {
-  background-color: #4285f4;
-  color: #fff;
-  position: relative;
-  overflow: hidden;
-}
-
-.suggestion-component .navigation-buttons button.previous::before,
-.suggestion-component .navigation-buttons button.next::after {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 0;
-  border-top: 7px solid transparent;
-  border-bottom: 7px solid transparent;
-}
-
-.suggestion-component .navigation-buttons button.previous::before {
-  left: 5px;
-  top: 50%;
-  transform: translateY(-50%);
-  border-right: 10px solid #3367d6;
-}
-
-.suggestion-component .navigation-buttons button.next::after {
-  right: 5px;
-  top: 50%;
-  transform: translateY(-50%);
-  border-left: 10px solid #3367d6;
-}
 
 /* Estilização do botão "Obter as melhores alternativas" */
 .submit-button {

@@ -51,33 +51,12 @@
       </div>
     </div>
 
-    <div *ngIf="bestAlternatives && bestAlternatives.length > 0" class="best-alternatives mb-3">
-      <h2>Melhores Alternativas:</h2>
-      <div *ngIf="currentHospitalIndex >= 0 && currentHospitalIndex < bestAlternatives.length">
-        <div class="hospital-info">
-          <h3>{{ bestAlternatives[currentHospitalIndex].name }}</h3>
-          <p>Endereço: {{ bestAlternatives[currentHospitalIndex].address }}</p>
-          <p>Tempo de Espera: {{ convertSecondsToTime(bestAlternatives[currentHospitalIndex].wait_time) }}</p>
-          <p>Duração da Viagem: {{ convertSecondsToTime(bestAlternatives[currentHospitalIndex].duration) }}</p>
-        </div>
+  
 
-        <div class="hospital-map">
-          <app-google-maps [latitude]="bestAlternatives[currentHospitalIndex].latitude" [longitude]="bestAlternatives[currentHospitalIndex].longitude"></app-google-maps>
-        </div>
-
-        <div class="navigation-buttons">
-          <button (click)="showPreviousHospital()" [disabled]="currentHospitalIndex === 0" class="previous">Anterior</button>
-          <button (click)="showNextHospital()" [disabled]="currentHospitalIndex === bestAlternatives.length - 1" class="next">Próximo</button>
-        </div>        
-      </div>
-    </div>
-
-    <div class="submit-button mb-3" *ngIf="showGetResultsButton">
+    <div class="submit-button mb-3" >
       <button (click)="handleSuggestion()" class="btn btn-primary">Obter as melhores alternativas</button>
     </div>
     
-    <div class="return-home-button mb-3" *ngIf="!showGetResultsButton">
-      <button (click)="handleReturnHome()" class="btn btn-secondary"> Pagina Inicial</button>
-    </div>
+    <app-modal-suggestions  [isShown]="isModalShown" [hospitals]="bestAlternatives"></app-modal-suggestions>
   </div>
 </div>

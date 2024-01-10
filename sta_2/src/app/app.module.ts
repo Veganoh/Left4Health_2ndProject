@@ -10,7 +10,8 @@ import { SuggestionsComponent } from './suggestions/suggestions.component';
 import { HomeComponent } from './home/home.component';
 import { GoogleMapsComponent } from './google-maps/google-maps.component';
 import { DiagnosisComponent } from './diagnosis/diagnosis.component';
-import { ModalComponent } from './modal/modal.component'; // Renomeado para DiagnosisComponent
+import { ModalComponent } from './modal/modal.component';
+import { ModalSuggestionsComponent } from './modal-suggestions/modal-suggestions.component'; // Renomeado para DiagnosisComponent
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ModalComponent } from './modal/modal.component'; // Renomeado para Diag
     HomeComponent,
     GoogleMapsComponent,
     DiagnosisComponent,
-    ModalComponent // Adicionado o DiagnosisComponent
+    ModalComponent,
+    ModalSuggestionsComponent // Adicionado o DiagnosisComponent
   ],
   imports: [
     BrowserModule,
