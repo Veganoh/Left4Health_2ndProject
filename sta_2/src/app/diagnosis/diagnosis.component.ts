@@ -28,6 +28,9 @@ export class DiagnosisComponent implements OnInit {
   mentalState: string = '';
   arrivalMode: string = '';
   symptoms: string = '';
+  temperature: string = '';
+  errorMessage: string = '';
+
 
   triage: number = 0;
 
@@ -52,7 +55,6 @@ export class DiagnosisComponent implements OnInit {
       age: this.age,
       injured: this.injured.toString(),
       pain: this.hasPain.toString(),
-      painLevel : this.painLevel.toString(),
       nrs_pain: this.hasPain ? this.painLevel.toString() : '0',
       heart_rate: this.heartRate,
       respiratory_rate: this.respiratoryRate,
@@ -60,8 +62,14 @@ export class DiagnosisComponent implements OnInit {
       saturation: this.saturation,
       mental_state: this.mentalState,
       arrival_mode: this.arrivalMode,
-      symptom: this.symptoms
+      symptom: this.symptoms,
+      temperature: this.temperature,
     };
+
+    if (!this.areAllFieldsFilled()) {
+      this.errorMessage = 'Por favor, preencha todos os campos antes de obter sugestões.';
+      return;
+    }
 
     this.diagnosisService.obtain_triage(formData).subscribe(
       (response) => {
@@ -72,7 +80,6 @@ export class DiagnosisComponent implements OnInit {
       }
     );
 
-    //this.triage = 1;
     this.isModalShown.next(true);
 
     console.log(formData);
@@ -90,7 +97,9 @@ export class DiagnosisComponent implements OnInit {
       this.hasPain.trim() !== '' &&
       this.bloodPressure.trim() !== '' &&
       this.mentalState.trim() !== '' &&
-      this.arrivalMode.trim() !== '';
+      this.arrivalMode.trim() !== '' &&
+      this.temperature.trim() !== '';
+
   
     return basicFieldsFilled;
   }

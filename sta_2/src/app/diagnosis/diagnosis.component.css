@@ -5,19 +5,14 @@
   box-sizing: border-box;
   font-family: Arial, sans-serif;
 }
-.container-moree {
-  height: 100%;
-  background-image: url("../../assets/61804.jpg"); /* Ajuste o caminho e a extensão conforme necessário */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
+
+
 
 /* Estilos para o conteúdo principal */
 .diagnostico-container {
   background-color: #f0f0f0;
   padding: 0px;
-  width: 35%;
+  width: 40%;
   margin:auto;
   margin-top: 20px;
 }

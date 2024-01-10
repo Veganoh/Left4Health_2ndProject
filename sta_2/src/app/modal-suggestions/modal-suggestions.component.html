@@ -1,0 +1,37 @@
+<div class="modal fade" id="myModal" tabindex="-1">
+  <div class="modal-dialog">
+     <div class="modal-content">
+        <header class="d-flex justify-content-center border-top 30px">
+           <h2> Melhores Alternativas</h2>
+        </header>
+        <div class="modal-body">
+           <div *ngIf="hospitals && hospitals.length > 0" class="best-alternatives mb-3">
+              <div *ngIf="currentHospitalIndex >= 0 && currentHospitalIndex < hospitals.length">
+                 <div class="hospital-info">
+                    <h3>{{ hospitals[currentHospitalIndex].name }}</h3>
+                    <p><strong>Endereço: </strong> {{ hospitals[currentHospitalIndex].address }}</p>
+                    <p><strong>Tempo de Espera: </strong> {{ convertSecondsToTime(hospitals[currentHospitalIndex].wait_time) }}</p>
+                    <p><strong>Duração da Viagem: </strong>{{ convertSecondsToTime(hospitals[currentHospitalIndex].duration) }}</p>
+                 </div>
+                 <div class="hospital-map">
+                    <app-google-maps [latitude]="hospitals[currentHospitalIndex].latitude" [longitude]="hospitals[currentHospitalIndex].longitude"></app-google-maps>
+                 </div>
+                 <div class="navigation-buttons">
+                    <button (click)="showPreviousHospital()" [disabled]="currentHospitalIndex === 0" class="previous">Anterior</button>
+                    <button (click)="showNextHospital()" [disabled]="currentHospitalIndex === hospitals.length - 1" class="next">Próximo</button>
+                 </div>
+              </div>
+           </div>
+        </div>
+
+        <div class="modal-footer">
+           <button type="button" class="btn btn-secondary" (click)="close()">
+           Fechar
+           </button>
+           <button id="submit-btn" type="submit" class="btn btn-primary" (click)="submit()">
+            Página Inicial
+          </button>
+        </div>
+     </div>
+  </div>
+</div>

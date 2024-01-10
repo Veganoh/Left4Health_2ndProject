@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { HospitalService } from '../services/hospital.service';
 import { Hospital } from '../domain/hospital';
 import { Router } from '@angular/router'; // Importe o Router do Angular
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-suggestions',
@@ -17,7 +18,9 @@ export class SuggestionsComponent {
   bestAlternatives: Hospital[] = [];
   errorMessage: string = '';
   currentHospitalIndex: number = 0;
-  showGetResultsButton = true; // Define como true para mostrar o botão inicialmente
+
+  isModalShown: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+
 
   constructor(private hospitalService: HospitalService, private router: Router) {}
 
@@ -62,13 +65,15 @@ export class SuggestionsComponent {
       (response) => {
         this.bestAlternatives = Object.values(response.best_alternatives).map(data => new Hospital(data));
         this.errorMessage = ''; // Limpa a mensagem de erro se a solicitação for bem-sucedida
-        this.showGetResultsButton = false; // Esconde o botão "Obter as melhores alternativas" após o clique
+        this.isModalShown.next(true);
       },
       (error) => {
         console.error('Erro ao obter melhores alternativas:', error);
         this.errorMessage = 'Erro ao obter melhores alternativas. Por favor, tente novamente mais tarde.';
       }
     );
+
+
   }
 
   showPreviousHospital() {
@@ -81,10 +86,5 @@ export class SuggestionsComponent {
     if (this.currentHospitalIndex < this.bestAlternatives.length - 1) {
       this.currentHospitalIndex++;
     }
-  }
-
-  handleReturnHome() {
-    // Redireciona para a componente home
-    this.router.navigate(['./home/home.component']); 
   }
 }

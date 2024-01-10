@@ -2,23 +2,24 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Modal } from 'bootstrap';
 import { BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
-
-
+import { Hospital } from '../domain/hospital';
 
 @Component({
-  selector: 'app-modal',
-  templateUrl: './modal.component.html',
-  styleUrls: ['./modal.component.css']
+  selector: 'app-modal-suggestions',
+  templateUrl: './modal-suggestions.component.html',
+  styleUrls: ['./modal-suggestions.component.css']
 })
-
-//Todo: api call in transfer  to service
-export class ModalComponent {
-
-  @Input() isShown: BehaviorSubject<boolean> = new BehaviorSubject(false);
-  @Input() triage: number = 0;
-  @Output() onSubmit = new EventEmitter<void>();
+export class ModalSuggestionsComponent {
 
   constructor(private router: Router) { }
+
+  @Input() isShown: BehaviorSubject<boolean> = new BehaviorSubject(false);
+  @Input() hospitals: Hospital[] = [];
+  @Output() onSubmit = new EventEmitter<void>();
+
+  currentHospitalIndex: number = 0;
+
+
 
   ngOnInit() {
     this.isShown.subscribe(
@@ -44,6 +45,30 @@ export class ModalComponent {
       }
     )
   }
+  
+  showPreviousHospital() {
+    if (this.currentHospitalIndex > 0) {
+      this.currentHospitalIndex--;
+    }
+  }
+
+  showNextHospital() {
+    if (this.currentHospitalIndex < this.hospitals.length - 1) {
+      this.currentHospitalIndex++;
+    }
+  }
+
+  convertSecondsToTime(seconds: number): string {
+    const hours = Math.floor(seconds / 3600);
+    const minutes = Math.floor((seconds % 3600) / 60);
+    const remainingSeconds = seconds % 60;
+  
+    return `${this.padZero(hours)}:${this.padZero(minutes)}:${this.padZero(remainingSeconds)}`;
+  }
+  
+  padZero(value: number): string {
+    return value < 10 ? `0${value}` : `${value}`;
+  }
 
   close() {
     this.isShown.next(false);
@@ -53,6 +78,8 @@ export class ModalComponent {
   submit() {
     this.onSubmit.emit();
     this.isShown.next(false);
-    this.router.navigate(['/suggestions']);
+    this.router.navigate(['']);
   }
+
+
 }
