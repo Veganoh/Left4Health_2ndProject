@@ -69,7 +69,7 @@ export class DiagnosisComponent implements OnInit {
       }
     );
 
-    this.triage = 2;
+    this.triage = 1;
     this.isModalShown.next(true);
 
     console.log(formData);

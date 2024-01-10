@@ -8,25 +8,33 @@
         <div class="modal-body">
           <ng-content></ng-content>
           <div *ngIf="this.triage === 1">
-            Vermelho
+            <p class="vermelho-text">
+              Utente classificado como <strong>Vermelho</strong>. Este é o nível mais crítico, exigindo atenção imediata e intervenção urgente. O paciente deve ser encaminhado imediatamente para cuidados médicos intensivos.
+            </p>
           </div>
           <div *ngIf="this.triage === 2">
-            Laranja
+            <p class="laranja-text">
+              Utente classificado como <strong>Laranja</strong>. Embora não seja tão crítico quanto o vermelho, ainda requer atenção prioritária devido à gravidade do quadro clínico. O paciente deve ser encaminhado para avaliação e tratamento médico sem demora.
+            </p>
           </div>
           <div *ngIf="this.triage === 3">
-            Amarelo
+            <p class="amarelo-text">
+              Utente classificado como <strong>Amarelo</strong>. Nível intermediário, indicando uma condição médica que requer atenção, mas não imediatamente crítica. O paciente deve ser monitorizado e receber tratamento médico o mais breve possível.
+            </p>
           </div>
           <div *ngIf="this.triage === 4">
-            Verde
+            <p class="verde-text">
+              Utente classificado como <strong>Verde</strong>. Condição estável, mas ainda necessita de avaliação e cuidados médicos. Não é uma situação de emergência imediata. O paciente deve procurar atendimento médico para avaliação e aconselhamento.
+            </p>
           </div>
           <div *ngIf="this.triage === 5">
-            Azul
+            <p class="azul-text">
+              Utente classificado como <strong>Azul</strong>. Nível menos crítico, indicando condição de baixa gravidade que pode esperar atendimento. O paciente pode procurar atendimento médico em um contexto de menor urgência.
+            </p>
           </div>
-
-
         </div>
-
-
+        
+        
 
 
         <div class="modal-footer">
