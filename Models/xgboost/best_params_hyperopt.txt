@@ -1,1 +1,1 @@
-{'booster': 0, 'estimators': 61, 'gamma': 0.56, 'grow_policy': 0, 'learning_rate': 0.1, 'max_depth': 36, 'min_child_weight': 7}
+{'booster': 2, 'estimators': 77, 'gamma': 0.9, 'grow_policy': 0, 'learning_rate': 0.1, 'max_depth': 92, 'min_child_weight': 0}

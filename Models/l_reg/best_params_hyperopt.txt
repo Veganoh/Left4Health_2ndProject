@@ -1,1 +1,1 @@
-{'C': 10.0, 'max_iter': 880, 'penalty': 0, 'solver': 0, 'tolerance': 0.44, 'weights': 1}
+{'C': 9.200000000000001, 'max_iter': 347, 'penalty': 0, 'solver': 0, 'tolerance': 0.87, 'weights': 1}
