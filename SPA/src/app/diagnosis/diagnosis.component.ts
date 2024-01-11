@@ -74,15 +74,12 @@ export class DiagnosisComponent implements OnInit {
     this.diagnosisService.obtain_triage(formData).subscribe(
       (response) => {
         this.triage = response.triage;
+        this.isModalShown.next(true);
       },
       (error) => {
         console.log(error);
       }
     );
-
-    this.isModalShown.next(true);
-
-    console.log(formData);
   };
 
   areAllFieldsFilled(): boolean {

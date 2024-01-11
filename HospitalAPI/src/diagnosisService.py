@@ -118,18 +118,15 @@ def get_diagnosis(patient_data):
     #Fill null with 0
     data = data.fillna(0)
 
-    print(f"DATAAAA: {data}")
 
     # Check if there is at least one sample in the data
     if data.shape[0] == 0:
-        print("Dados de teste vazios. Não é possível fazer previsões.")
         return None
     
     #Predict the diagnosis
     prediction = model.predict(data)
     patient_prediction= prediction[0]
-    print(f"Predict: {patient_prediction}")
-    
+
     return patient_prediction
     
 
