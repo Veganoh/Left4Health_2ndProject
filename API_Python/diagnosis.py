@@ -3,18 +3,25 @@ import joblib
 import pandas as pd
 import os
 
+def choose_model(model_num_str):
+    model_num= int(model_num_str)
+  
+    if model_num==1:
+        model_name="svm"
+    elif model_num==2:
+        model_name="adaboost"
+    else:
+        model_name="xgboost"
+
+    #Load model from Models folder
+    modelPath = os.path.abspath("../Models/"+model_name+'/'"model_"+model_name+'.joblib')
+    model = joblib.load(modelPath)
+    return model
 
 def get_diagnosis(patient_data):
 
-    #PUTT MODELS NOT STATIC
 
-    #model=patient_data["model"]
-    #print(f"MODELLLL: {model}")
-    model="svm"
-
-    #Load model from Models folder
-    modelPath = os.path.abspath("../Models/"+model+'/'"model_"+model+'.joblib')
-    model = joblib.load(modelPath)
+    model=choose_model(patient_data['model'])
 
     #Female	Age	Injured	Pain	NRS_pain	HR	RR	BT	Saturation	KTAS_expert	Mental_Alert	Mental_Pain Response	Mental_Unresponsive	Mental_Verbal Response	Arrival mode_Other	Arrival mode_Private Ambulance	Arrival mode_Private Vehicle	Arrival mode_Public Ambulance	Arrival mode_Public Transport	Arrival mode_Walking	Arrival mode_Wheelchair	Blood Pressure_Elevated	Blood Pressure_Hypertension	Blood Pressure_Hypertensive crises	Abdominal Pain	Dyspnea	Dizziness	Fever	Anterior Chest Pain	Open Wound	Headache	Epigastric Pain	Mental Change	General Weakness	Vomiting	Chest Pain
     columns = ['Female','Age','Injured','Pain','NRS_pain',

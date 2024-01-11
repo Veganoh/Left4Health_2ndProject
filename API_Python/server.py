@@ -19,6 +19,8 @@ def diagnosis():
     else :
         diagnose=get_diagnosis(patient_data)
         diagnose_serializable = int(diagnose)
+        # Adds 1 to the returned value because the prediction ranges from 0-4 and the triage from 1-5
+        diagnose_serializable += 1
         response = jsonify({'triage': diagnose_serializable})
         response.headers.add('Access-Control-Allow-Origin', '*')
         print (response)
