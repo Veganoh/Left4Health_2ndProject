@@ -159,5 +159,5 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 
-sta_2/src/environments
-sta_2/src/index.html
+SPA/src/environments
+SPA/src/index.html
