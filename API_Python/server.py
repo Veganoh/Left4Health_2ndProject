@@ -1,32 +1,34 @@
 from flask import Flask, jsonify, request
-from diagnosis import PatientData
+from diagnosis import get_diagnosis
 
 app = Flask(__name__)
 
-class MyApp:
-    def __init__(self):
-        self.PatientData = PatientData()
-
-    def get_PatientData(self):
-        return self.hospital_service
-
-my_app = MyApp()
-
-@app.route('/api/diagnosis', methods=['GET'])
+@app.route('/api/diagnosis', methods=['POST', 'OPTIONS'])
 def diagnosis():
-    patient_data = request.get_json()
+    if request.method == 'OPTIONS':
+        headers = {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'POST',
+            'Access-Control-Allow-Headers': 'Content-Type',
+        }
+        return ('', 204, headers)
 
+    patient_data = request.get_json()
     if not patient_data:
         return jsonify({'error': 'Missing required parameters.'}), 400
     else :
-        diagnose = my_app.PatientData.get_diagnosis(patient_data)
-        response = jsonify({'diagnosis' : diagnose})
+        diagnose=get_diagnosis(patient_data)
+        diagnose_serializable = int(diagnose)
+        response = jsonify({'triage': diagnose_serializable})
+        response.headers.add('Access-Control-Allow-Origin', '*')
         print (response)
         return response
 
-   
+@app.route('/api/hello', methods=['GET'])
+def hello():
+    return "Hello, World!"   
 
 
-
-
+if __name__ == '__main__':
+    app.run(debug=True, port=5010)
     
