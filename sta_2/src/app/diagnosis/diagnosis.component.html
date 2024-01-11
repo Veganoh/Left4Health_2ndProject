@@ -59,7 +59,7 @@
          <div *ngIf="showPainField">
             <hr>
             <label for="painLevel">Nível de Dor (1-10)</label>
-            <input type="range" id="painLevel" name="painLevel" [(ngModel)]="painLevel" min="1" max="10">
+            <input type="range" id="painLevel" name="painLevel" value="5" [(ngModel)]="painLevel" min="1" max="10">
             <span id="painLevelValue">{{ painLevel }}</span>
          </div>
          <hr>

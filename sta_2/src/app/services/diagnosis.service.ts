@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class DiagnosisService {
 
-  private apiUrl = 'http://127.0.0.1:5010/api/diagnosis';
+  private apiUrl = 'http://127.0.0.1:5000/api/diagnosis';
 
 
   constructor(private http: HttpClient) { }

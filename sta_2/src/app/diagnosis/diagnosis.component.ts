@@ -19,7 +19,7 @@ export class DiagnosisComponent implements OnInit {
   sex: string = '';
   injured: string = '';
   hasPain: string = '';
-  painLevel: string = '';
+  painLevel: string = '5';
   age: string = '';
   heartRate: string = '';
   respiratoryRate: string = '';

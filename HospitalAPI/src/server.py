@@ -1,6 +1,7 @@
 from flask import Flask, jsonify, request
 from hospitalDatabase import HospitalDatabase
 from hospitalService import HospitalService
+import diagnosisService
 
 app = Flask(__name__)
 
@@ -49,6 +50,29 @@ def best_alternatives():
     response = jsonify({'best_alternatives': best_alternatives})
     response.headers.add('Access-Control-Allow-Origin', '*')
 
+    return response
+
+
+@app.route('/api/diagnosis', methods=['POST', 'OPTIONS'])
+def diagnosis():
+    if request.method == 'OPTIONS':
+        headers = {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'POST',
+            'Access-Control-Allow-Headers': 'Content-Type',
+        }
+        return ('', 204, headers)
+
+    patient_data = request.get_json()
+    if not patient_data:
+        return jsonify({'error': 'Missing required parameters.'}), 400
+    else:
+        diagnose = diagnosisService.get_diagnosis(patient_data)
+        diagnose_serializable = int(diagnose)
+        # Adds 1 to the returned value because the prediction ranges from 0-4 and the triage from 1-5
+        diagnose_serializable += 1
+        response = jsonify({'triage': diagnose_serializable})
+        response.headers.add('Access-Control-Allow-Origin', '*')
     return response
 
 
