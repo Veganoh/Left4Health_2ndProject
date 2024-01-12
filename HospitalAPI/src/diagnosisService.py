@@ -23,7 +23,7 @@ def get_diagnosis(patient_data):
     model=choose_model(patient_data['model'])
 
     #Female	Age	Injured	Pain	NRS_pain	HR	RR	BT	Saturation	KTAS_expert	Mental_Alert	Mental_Pain Response	Mental_Unresponsive	Mental_Verbal Response	Arrival mode_Other	Arrival mode_Private Ambulance	Arrival mode_Private Vehicle	Arrival mode_Public Ambulance	Arrival mode_Public Transport	Arrival mode_Walking	Arrival mode_Wheelchair	Blood Pressure_Elevated	Blood Pressure_Hypertension	Blood Pressure_Hypertensive crises	Abdominal Pain	Dyspnea	Dizziness	Fever	Anterior Chest Pain	Open Wound	Headache	Epigastric Pain	Mental Change	General Weakness	Vomiting	Chest Pain
-    columns = ['Female','Age','Injured','Pain','NRS_pain',
+    columns = ['Female','Age','Injured','Pain','Low Pain','Moderate Pain','High Pain',
             'HR','RR','BT','Saturation',
             'Mental_Alert','Mental_Pain Response','Mental_Unresponsive','Mental_Verbal Response',
             'Arrival mode_Other','Arrival mode_Private Ambulance','Arrival mode_Private Vehicle',
@@ -42,8 +42,7 @@ def get_diagnosis(patient_data):
         'Female': int(patient_data['sex']),  
         'Age': int(patient_data["age"]),  
         'Injured':  int(patient_data["injured"]), 
-        'Pain':int(patient_data["pain"]),
-        'NRS_pain': int(patient_data["nrs_pain"]),  
+        'Pain':int(patient_data["pain"]), 
         'HR': float(patient_data["heart_rate"]), 
         'RR': float(patient_data["respiratory_rate"]), 
         'BT': float(patient_data["temperature"]), 
@@ -114,6 +113,16 @@ def get_diagnosis(patient_data):
     if select_symptom:
         data.loc[len(data) - 1,select_symptom]=1
 
+    #Processed data from pain_level
+    # Pain level 0 - 10
+    pain_level= int(patient_data["nrs_pain"])
+
+    if pain_level < 4:
+        data.loc[len(data) - 1,'Low Pain']=1
+    elif pain_level < 7:
+        data.loc[len(data) - 1,'Moderate Pain']=1
+    else:
+        data.loc[len(data) - 1,'High Pain']=1
 
     #Fill null with 0
     data = data.fillna(0)
