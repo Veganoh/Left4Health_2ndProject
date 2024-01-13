@@ -3,6 +3,7 @@ import json
 from hospital import Hospital
 from concurrent.futures import ThreadPoolExecutor
 
+
 class HospitalDatabase:
     MAX_RETRIES = 2
     INSTITUTION_URL = "https://tempos.min-saude.pt/api.php/institution"
@@ -25,7 +26,8 @@ class HospitalDatabase:
             data = json.loads(response.content.decode("utf-8-sig"))
 
             hospitals_data = data.get("Result", [])
-            self.hospitals = [Hospital(id=hospital["Id"], name=hospital["Name"], address=hospital["Address"], latitude=hospital["Latitude"], longitude=hospital["Longitude"])
+            self.hospitals = [Hospital(id=hospital["Id"], name=hospital["Name"], address=hospital["Address"],
+                                       latitude=hospital["Latitude"], longitude=hospital["Longitude"])
                               for hospital in hospitals_data if hospital.get("HasEmergency", False)]
             self.process_waiting_times()
 
@@ -33,7 +35,6 @@ class HospitalDatabase:
             print(f"Failed to fetch or process data. Error: {e}")
 
         print("Os dados hospitalares foram adquiridos com sucesso!")
-
 
     def process_waiting_times(self):
         try:
@@ -66,11 +67,11 @@ class HospitalDatabase:
                     if urgency_general_queues:
                         first_occurrence = urgency_general_queues[0]
                         return {
-                            "Red": first_occurrence.get("Red", {}).get("Time",None),
-                            "Orange": first_occurrence.get("Orange", {}).get("Time",None),
-                            "Yellow": first_occurrence.get("Yellow", {}).get("Time",None),
-                            "Green": first_occurrence.get("Green", {}).get("Time",None),
-                            "Blue": first_occurrence.get("Blue", {}).get("Time",None),
+                            "Red": first_occurrence.get("Red", {}).get("Time", None),
+                            "Orange": first_occurrence.get("Orange", {}).get("Time", None),
+                            "Yellow": first_occurrence.get("Yellow", {}).get("Time", None),
+                            "Green": first_occurrence.get("Green", {}).get("Time", None),
+                            "Blue": first_occurrence.get("Blue", {}).get("Time", None),
                         }
                     else:
                         return "N/A"
@@ -89,7 +90,8 @@ class HospitalDatabase:
         # for a given color gives the pair ID and wait time of each hospital
 
     def get_hospitals_by_color(self, color):
-        hospitals_info = [{"ID": hospital.id, "Wait Time": hospital.get_wait_time(color)} for hospital in self.hospitals]
+        hospitals_info = [{"ID": hospital.id, "Wait Time": hospital.get_wait_time(color)} for hospital in
+                          self.hospitals]
         hospitals_info.sort(key=lambda x: x['ID'])
 
         return hospitals_info

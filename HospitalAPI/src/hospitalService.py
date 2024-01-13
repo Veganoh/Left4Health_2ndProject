@@ -44,7 +44,6 @@ class HospitalService:
     def get_waiting_time_by_id(self, waiting_time_list, id):
         waiting_time = None
 
-
         for item_waiting_time in waiting_time_list:
             if item_waiting_time['ID'] == id:
                 waiting_time = item_waiting_time['Wait Time']
