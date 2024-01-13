@@ -23,7 +23,7 @@ def get_diagnosis(patient_data):
     model=choose_model(patient_data['model'])
 
     #Female	Age	Injured	Pain	NRS_pain	HR	RR	BT	Saturation	KTAS_expert	Mental_Alert	Mental_Pain Response	Mental_Unresponsive	Mental_Verbal Response	Arrival mode_Other	Arrival mode_Private Ambulance	Arrival mode_Private Vehicle	Arrival mode_Public Ambulance	Arrival mode_Public Transport	Arrival mode_Walking	Arrival mode_Wheelchair	Blood Pressure_Elevated	Blood Pressure_Hypertension	Blood Pressure_Hypertensive crises	Abdominal Pain	Dyspnea	Dizziness	Fever	Anterior Chest Pain	Open Wound	Headache	Epigastric Pain	Mental Change	General Weakness	Vomiting	Chest Pain
-    columns = ['Female','Age','Injured','Pain','Low Pain','Moderate Pain','High Pain',
+    columns = ['Female','Age','Injured','Pain',
             'HR','RR','BT','Saturation',
             'Mental_Alert','Mental_Pain Response','Mental_Unresponsive','Mental_Verbal Response',
             'Arrival mode_Other','Arrival mode_Private Ambulance','Arrival mode_Private Vehicle',
@@ -31,7 +31,7 @@ def get_diagnosis(patient_data):
             'Arrival mode_Wheelchair','Blood Pressure_Elevated','Blood Pressure_Hypertension',
             'Blood Pressure_Hypertensive crises','Abdominal Pain','Dyspnea','Dizziness','Fever',
             'Anterior Chest Pain','Open Wound','Headache','Epigastric Pain','Mental Change',
-            'General Weakness','Vomiting','Chest Pain']
+            'General Weakness','Vomiting','Chest Pain','Low Pain','Moderate Pain','High Pain',]
     
 
     #Create a dataframe with the patient data in respective columns 
