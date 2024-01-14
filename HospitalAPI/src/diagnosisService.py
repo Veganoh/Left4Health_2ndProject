@@ -1,6 +1,7 @@
 import joblib
 import pandas as pd
 import os
+from sklearn.preprocessing import MinMaxScaler, StandardScaler
 
 def choose_model(model_num_str):
     model_num= int(model_num_str)
@@ -123,6 +124,18 @@ def get_diagnosis(patient_data):
         data.loc[len(data) - 1,'Moderate Pain']=1
     else:
         data.loc[len(data) - 1,'High Pain']=1
+
+    # Standardize and normalize data
+    # HR - RR - BT - Saturation - Age
+        
+    scaler = StandardScaler()
+    minmax_scaler = MinMaxScaler()
+
+    columns_change = ['HR','RR','BT','Saturation','Age']
+    # Normalize data using min-max scaler
+    data[columns_change] = minmax_scaler.fit_transform(data[columns_change])
+    # Standardize data using standard scaler
+    data[columns_change] = scaler.fit_transform(data[columns_change])
 
     #Fill null with 0
     data = data.fillna(0)
